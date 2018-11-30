@@ -41,9 +41,9 @@ The archive option will open up a list of workouts completed and submitted. The 
 
 ## Prototypes
 
-## Component and Route Structure
+## Components and Route Structure
 
-![Component and Route Structure](./src/assets/images/component-and-route-structure.jpg)
+![Components and Route Structure](./src/assets/images/components-and-route-structure.jpg)
 
 ## Setup Instructions
 
