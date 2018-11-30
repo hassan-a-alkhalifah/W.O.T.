@@ -35,7 +35,9 @@ The archive option will open up a list of workouts completed and submitted. The 
 * As a user, I want to be able to see an exhausted list of previous workouts and the option view their details.
 * As a user, I want the ability to edit previous workouts and an option to save edits.
 
-## Website Sketch
+## Website Sketch and Wireframe Sketch
+
+![Website Sketch and Wireframe Sketch](./src/assets/images/website-sketch-and-wireframe-sketch.jpg)
 
 ## Prototypes
 
