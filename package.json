@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/hassan-a-alkhalifah/W.O.T./issues"
   },
-  "homepage": "https://github.com/hassan-a-alkhalifah/W.O.T.#readme"
+  "homepage": "https://github.com/hassan-a-alkhalifah/W.O.T.#readme",
+  "dependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  }
 }
