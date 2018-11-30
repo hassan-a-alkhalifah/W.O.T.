@@ -1,0 +1,19 @@
+{
+  "name": "w.o.t.",
+  "version": "1.0.0",
+  "description": "W.O.T. (Workout Tracker) is an application designed to make keeping track of workouts and workout habits a lot easier.",
+  "main": "index.jsx",
+  "scripts": {
+    "test": "jest; exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hassan-a-alkhalifah/W.O.T..git"
+  },
+  "author": "Hassan Al-khalifah",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hassan-a-alkhalifah/W.O.T./issues"
+  },
+  "homepage": "https://github.com/hassan-a-alkhalifah/W.O.T.#readme"
+}
