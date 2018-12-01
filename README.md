@@ -39,7 +39,9 @@ The archive option will open up a list of workouts completed and submitted. The 
 
 ![Website Sketch and Wireframe Sketch](./src/assets/images/website-sketch-and-wireframe-sketch.jpg)
 
-## Prototypes
+## Prototypes/Wireframe
+
+![Prototypes/Wireframe](./src/assets/images/prototype-wireframe.png)
 
 ## Components and Route Structure
 
