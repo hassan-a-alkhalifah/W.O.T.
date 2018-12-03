@@ -1,13 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-function ExerciseArchives() {
+function Workout() {
   return(
-    <div>
-      <button><Link to='startNewWorkout'>Start New Workout</Link></button>
-      <button><Link to='exerciseArchives'>Exercise Archives</Link></button>
-    </div>
+    <div>Workout Component</div>
   );
 }
 
-export default ExerciseArchives;
+export default Workout;
