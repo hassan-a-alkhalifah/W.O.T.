@@ -8,25 +8,26 @@
 
 W.O.T (Workout Tracker) is an application designed to make keeping track of workouts and workout habits a lot easier.
 
-When opening the app, the user is presented with two links, a create new workout option and a archive option.
+When opening the app, the page will load on the workout (Home) page. The page will have the following:
 
-The create new workout option will open up a workout form which allows the user to fill in the form as the workout goes. The form consist of the following:
+* A exercise title input.
 * A date selector to give the user the option to choose the date of the workout.
-* An initial (starting) notes section to allow the user to include any specifics about the exercise. Examples: Body parts worked, rest time goals, workout percentages etc.
+* A notes section to allow the user to include any specifics about the exercise. Examples: Body parts worked, rest time goals, workout percentages etc.
 * An initial exercise input that allows the user to enter details about an exercise being performed. This consist of the following:
   * It allows the user to enter the exercise name.
   * It allow the user to enter an initial workout weight and reps completed. This is considered one set. If the user requires, additional sets can be added with a simple click of the visible plus sign.
 If the user requires, additional exercises can be added with the click of the add new exercise button.
-* An additional notes section which would allow the user to keep notes on diet, mood etc.
-* A submit button to allow the user to store the workout completed for later viewing.
+* A finish button to allow the user to store the workout completed for later viewing.
+* Checkboxes for workouts, exercises and set to allow user to choose which to delete.
+* Trash icon to delete workouts, exercises and sets checked.
 
-The archive option will open up a list of workouts completed and submitted. The user can click on any of the workout to view all information entered and the option to edit and save edits will be available to the user.
+The archive icon will direct the user to the archive page, which will present the user with a list of workouts completed and submitted. The user can click on any of the workout to view all information entered and the option to edit and save edits will be available to the user.
 
 ## User Stories
 
 * As a user, I want to be able to create a new workout.
 * As a user, I want the ability to selected a date I worked out on.
-* As a user, I want the ability to enter initial notes/thoughts about my workout.
+* As a user, I want the ability to enter notes/thoughts about my workout.
 * As a user, I want the ability to create or delete as many exercises as I want.
 * As a user, when creating a new exercise, I want a place to be able to enter a exercise name which allows me to add an set the includes a place to enter workout weight and reps performed.
 * As a user, when creating a new exercise, I want the ability to add additional sets of workout weights and reps complete and, if required, the ability to delete sets.
@@ -34,6 +35,7 @@ The archive option will open up a list of workouts completed and submitted. The 
 * As a user, I want the ability to be able to submit my workout to be stored for later viewing purposes.
 * As a user, I want to be able to see an exhausted list of previous workouts and the option view their details.
 * As a user, I want the ability to edit previous workouts and an option to save edits.
+* As a user, I want the ability to delete previous workouts.
 
 ## Prototypes/Wireframe
 
