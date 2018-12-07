@@ -42,6 +42,7 @@ function Workout() {
             height: 34px;
             border: none;
             font-size: 14px;
+            padding-left: 13px;
           }
           input::placeholder {
             color: #C7C5C5;
