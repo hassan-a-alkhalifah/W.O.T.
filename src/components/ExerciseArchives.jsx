@@ -1,8 +1,12 @@
 import React from 'react';
+import PreviousExerciseList from './PreviousExerciseList';
 
 function ExerciseArchives() {
   return(
-    <div>ExerciseArchives Component</div>
+    <div>
+      <div>ExerciseArchives Component</div>
+      <PreviousExerciseList></PreviousExerciseList>
+    </div>
   );
 }
 
