@@ -2,6 +2,7 @@ import React from 'react';
 import ExerciseList from './ExerciseList';
 import calendarIcon from '../assets/images/calendar-icon.png';
 import noteIcon from '../assets/images/note-icon.png';
+import addExerciseIcon from '../assets/images/add-exercise-icon.png';
 
 function Workout() {
   const workoutFormStyles = {
@@ -24,6 +25,14 @@ function Workout() {
     width: '24px',
     height: '26px'
   }
+  const addExerciseIconConainerStyles = {
+    width: '100%',
+    textAlign: 'center'
+  }
+  const addExerciseIconStyles = {
+    width: '40px',
+    height: '40px',
+  }
 
   return(
     <div>
@@ -45,6 +54,9 @@ function Workout() {
         <img src={noteIcon} alt="Note Icon" style={noteIconStyles}/>
       </div>
       <ExerciseList></ExerciseList>
+      <div style={addExerciseIconConainerStyles}>
+        <img src={addExerciseIcon} alt="Add Exercise Icon" style={addExerciseIconStyles}/>
+      </div>
     </div>
   );
 }
