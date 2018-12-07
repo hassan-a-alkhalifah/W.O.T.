@@ -19,6 +19,9 @@ function Footer() {
   return(
     <div style={footerStyles}>
       <style jsx>{`
+          p {
+            font-weight: 100;
+          }
           img {
             width: 21px;
           }
