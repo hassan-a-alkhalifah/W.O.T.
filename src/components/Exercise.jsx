@@ -23,7 +23,7 @@ function Exercise() {
     alignItems: 'center'
   }
   const addSetIconSpacerStyles = {
-    width: '240px',
+    width: '238px',
     height: '34px'
   }
   const addSetIconStyles = {
@@ -112,7 +112,7 @@ function Exercise() {
         <div style={exerciseInputSpacerStyles}></div>
         <input type="text" placeholder="Enter Exercise Name"/>
         <label>
-          <input type="checkbox" name="checkbox-02" />
+          <input type="checkbox"/>
           <span></span>
         </label>
       </div>
