@@ -10,7 +10,6 @@ function App() {
   return(
     <div>
       <Header></Header>
-      <h1>App</h1>
       <Switch>
         <Route exact path='/' render={()=><Workout />} />
         <Route exact path='/exerciseArchives' render={()=><ExerciseArchives />} />
