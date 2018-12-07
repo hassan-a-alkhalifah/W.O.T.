@@ -1,10 +1,49 @@
 import React from 'react';
 import ExerciseList from './ExerciseList';
+import calendarIcon from '../assets/images/calendar-icon.png';
+import noteIcon from '../assets/images/note-icon.png';
 
 function Workout() {
+  const workoutFormStyles = {
+    height: '59px',
+    backgroundColor: '#454545',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  };
+  const spacerStyles = {
+    width: '70px',
+    height: '24px'
+  }
+  const calendarIconStyles = {
+    width: '22px',
+    height: '24px',
+    margin: '0 12px'
+  };
+  const noteIconStyles = {
+    width: '24px',
+    height: '26px'
+  }
+
   return(
     <div>
-      <div>Workout Component</div>
+      <style jsx>{`
+          input {
+            width: 185px;
+            height: 34px;
+            border: none;
+            font-size: 14px;
+          }
+          input::placeholder {
+            color: #C7C5C5;
+          }
+      `}</style>
+    <div style={workoutFormStyles}>
+        <div style={spacerStyles}></div>
+        <input placeholder="Enter Workout Title"/>
+        <img src={calendarIcon} alt="Calendar Icon" style={calendarIconStyles}/>
+        <img src={noteIcon} alt="Note Icon" style={noteIconStyles}/>
+      </div>
       <ExerciseList></ExerciseList>
     </div>
   );
