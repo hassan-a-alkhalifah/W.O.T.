@@ -21,6 +21,22 @@ function Header() {
     justifyContent: 'space-around',
     alignItems: 'center',
   }
+  const homeIconStyles = {
+    width: '29px',
+    height: '29px'
+  }
+  const archiveIconStyles = {
+    width: '30px',
+    height: '26px'
+  }
+  const finishIconStyles = {
+    width: '25px',
+    height: '25px'
+  }
+  const deleteIconStyles = {
+    width: '30px',
+    height: '30px'
+  }
 
   return(
     <div>
@@ -33,10 +49,10 @@ function Header() {
         <h1>W.O.T.</h1>
       </div>
       <div style={navigationBarStyles}>
-        <img src={homeIcon} alt="Home Icon"/>
-        <img src={archiveIcon} alt="Archive Icon"/>
-        <img src={finishIcon} alt="Finish Icon"/>
-        <img src={deleteIcon} alt=" Delete Icon"/>
+        <img src={homeIcon} alt="Home Icon" style={homeIconStyles}/>
+        <img src={archiveIcon} alt="Archive Icon" style={archiveIconStyles}/>
+        <img src={finishIcon} alt="Finish Icon" style={finishIconStyles}/>
+        <img src={deleteIcon} alt=" Delete Icon" style={deleteIconStyles}/>
       </div>
     </div>
   );
