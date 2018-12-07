@@ -14,7 +14,7 @@ function Footer() {
     alignItems: 'center',
     color: '#FFF',
     fontSize: '12px'
-  }
+  };
 
   return(
     <div style={footerStyles}>

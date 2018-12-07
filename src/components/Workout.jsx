@@ -15,7 +15,7 @@ function Workout() {
   const spacerStyles = {
     width: '70px',
     height: '24px'
-  }
+  };
   const calendarIconStyles = {
     width: '22px',
     height: '24px',
@@ -24,15 +24,15 @@ function Workout() {
   const noteIconStyles = {
     width: '24px',
     height: '26px'
-  }
+  };
   const addExerciseIconConainerStyles = {
     width: '100%',
     textAlign: 'center'
-  }
+  };
   const addExerciseIconStyles = {
     width: '40px',
     height: '40px',
-  }
+  };
 
   return(
     <div>
@@ -47,9 +47,9 @@ function Workout() {
             color: #C7C5C5;
           }
       `}</style>
-    <div style={workoutFormStyles}>
+      <div style={workoutFormStyles}>
         <div style={spacerStyles}></div>
-        <input placeholder="Enter Workout Title"/>
+        <input type="text" placeholder="Enter Workout Title"/>
         <img src={calendarIcon} alt="Calendar Icon" style={calendarIconStyles}/>
         <img src={noteIcon} alt="Note Icon" style={noteIconStyles}/>
       </div>

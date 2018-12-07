@@ -20,23 +20,23 @@ function Header() {
     display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'center',
-  }
+  };
   const homeIconStyles = {
     width: '29px',
     height: '29px'
-  }
+  };
   const archiveIconStyles = {
     width: '30px',
     height: '26px'
-  }
+  };
   const finishIconStyles = {
     width: '25px',
     height: '25px'
-  }
+  };
   const deleteIconStyles = {
     width: '30px',
     height: '30px'
-  }
+  };
 
   return(
     <div>
