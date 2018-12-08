@@ -67,7 +67,6 @@ class App extends React.Component {
               <Workout
                 masterWorkoutList={this.state.masterWorkoutList}
                 masterExerciseList={this.state.masterExerciseList}
-                selectedWorkoutId={this.state.selectedWorkoutId}
               />
             }
           />
