@@ -1,14 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function Set() {
+function Set(props) {
   const setContainerStyles = {
     display: 'flex',
     alignItems: 'center'
-  }
+  };
   const setContainerSpacerStyles = {
     width: '31px',
     height: '13px'
-  }
+  };
 
   return(
     <div style={setContainerStyles}>
@@ -75,10 +76,10 @@ function Set() {
             content: "X";
         }
       `}</style>
-    <div style={setContainerSpacerStyles}></div>
+      <div style={setContainerSpacerStyles}></div>
       <div className="setInputContainer">
         <div>
-          <p>1</p>
+          <p>{props.setNumber}</p>
         </div>
         <input/>
         <input/>
@@ -90,5 +91,12 @@ function Set() {
     </div>
   );
 }
+
+Set.propTypes = {
+  setId: PropTypes.string,
+  setNumber: PropTypes.number,
+  weight: PropTypes.string,
+  reps: PropTypes.string
+};
 
 export default Set;
