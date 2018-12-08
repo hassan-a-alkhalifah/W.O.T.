@@ -1,18 +1,34 @@
 import React from 'react';
 import Exercise from './Exercise';
+import PropTypes from 'prop-types';
 
-function ExerciseList() {
+function ExerciseList(props) {
   const exerciseListStyles = {
     display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'center',
     marginTop: '28px'
-  }
+  };
 
   return(
     <div style={exerciseListStyles}>
-      <Exercise></Exercise>
+      {Object.keys(props.masterExerciseList).map((exerciseId) => {
+        let exercise = props.masterExerciseList[exerciseId];
+        return(
+          <Exercise
+            key={exerciseId}
+            exerciseId={exerciseId}
+            exerciseName={exercise.exerciseName}
+            setList={exercise.setList}
+          />
+        );
+      })}
     </div>
   );
 }
+
+ExerciseList.propTypes = {
+  masterExerciseList: PropTypes.object
+};
 
 export default ExerciseList;
