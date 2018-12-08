@@ -3,8 +3,9 @@ import ExerciseList from './ExerciseList';
 import calendarIcon from '../assets/images/calendar-icon.png';
 import noteIcon from '../assets/images/note-icon.png';
 import addExerciseIcon from '../assets/images/add-exercise-icon.png';
+import PropTypes from 'prop-types';
 
-function Workout() {
+function Workout(props) {
   const workoutFormStyles = {
     height: '59px',
     backgroundColor: '#454545',
@@ -54,12 +55,19 @@ function Workout() {
         <img src={calendarIcon} alt="Calendar Icon" style={calendarIconStyles}/>
         <img src={noteIcon} alt="Note Icon" style={noteIconStyles}/>
       </div>
-      <ExerciseList></ExerciseList>
+      <ExerciseList
+        masterExerciseList={props.masterExerciseList}
+      />
       <div style={addExerciseIconConainerStyles}>
         <img src={addExerciseIcon} alt="Add Exercise Icon" style={addExerciseIconStyles}/>
       </div>
     </div>
   );
 }
+
+Workout.propTypes = {
+  masterWorkoutList: PropTypes.object,
+  masterExerciseList: PropTypes.object
+};
 
 export default Workout;
