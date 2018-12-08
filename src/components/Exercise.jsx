@@ -1,35 +1,36 @@
 import React from 'react';
 import SetList from './SetList';
 import addSetIcon from '../assets/images/add-set-icon.png';
+import PropTypes from 'prop-types';
 
-function Exercise() {
+function Exercise(props) {
   const exerciseStyles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center'
-  }
+  };
   const exerciseInputStyles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
-  }
+  };
   const exerciseInputSpacerStyles = {
     width: '31px',
     height: '13px'
-  }
+  };
   const addSetIconContainerStyles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center'
-  }
+  };
   const addSetIconSpacerStyles = {
     width: '238px',
     height: '34px'
-  }
+  };
   const addSetIconStyles = {
     width: '12px',
     height: '12px'
-  }
+  };
 
   return(
     <div style={exerciseStyles}>
@@ -108,7 +109,7 @@ function Exercise() {
               content: "X";
           }
       `}</style>
-    <div style={exerciseInputStyles}>
+      <div style={exerciseInputStyles}>
         <div style={exerciseInputSpacerStyles}></div>
         <input type="text" placeholder="Enter Exercise Name"/>
         <label>
@@ -127,7 +128,9 @@ function Exercise() {
           <p>Reps</p>
         </div>
       </div>
-      <SetList></SetList>
+      <SetList
+        setList={props.setList}
+      />
       <div style={addSetIconContainerStyles}>
         <div style={addSetIconSpacerStyles}></div>
         <img src={addSetIcon} alt="Add Set Icon" style={addSetIconStyles}/>
@@ -135,5 +138,11 @@ function Exercise() {
     </div>
   );
 }
+
+Exercise.propTypes = {
+  exerciseId: PropTypes.string,
+  exerciseName: PropTypes.string,
+  setList: PropTypes.object
+};
 
 export default Exercise;
