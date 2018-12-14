@@ -57,7 +57,7 @@ function Workout(props) {
           type="text"
           placeholder="Enter Workout Title"
           name="workoutTitleInput"
-          onChange={(event) => {props.onInputChange(event, ' ')}}
+          onChange={(event) => {props.onInputChange(event, 'workout')}}
           value={props.workoutTitleInput}
           ref={(input) => {_workoutTitleInput = input}}
         />
