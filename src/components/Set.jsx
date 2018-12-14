@@ -11,6 +11,8 @@ function Set(props) {
     height: '13px'
   };
 
+  let _weight = '';
+
   return(
     <div style={setContainerStyles}>
       <style jsx>{`
@@ -81,7 +83,12 @@ function Set(props) {
         <div>
           <p>{props.setNumber}</p>
         </div>
-        <input/>
+        <input
+          type="number"
+          onChange={(event) => {props.onInputChange(event, 'weight', props.setId, props.exerciseId)}}
+          value={props.weight}
+          ref={(input) => {_weight = input}}
+        />
         <input/>
       </div>
       <label>
@@ -96,7 +103,9 @@ Set.propTypes = {
   setId: PropTypes.string,
   setNumber: PropTypes.number,
   weight: PropTypes.string,
-  reps: PropTypes.string
+  reps: PropTypes.string,
+  exerciseId: PropTypes.string,
+  onInputChange: PropTypes.func
 };
 
 export default Set;
