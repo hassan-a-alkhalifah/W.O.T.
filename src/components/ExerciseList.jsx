@@ -20,6 +20,7 @@ function ExerciseList(props) {
             exerciseId={exerciseId}
             exerciseName={exercise.exerciseName}
             setList={exercise.setList}
+            onInputChange={props.onInputChange}
           />
         );
       })}
@@ -28,7 +29,9 @@ function ExerciseList(props) {
 }
 
 ExerciseList.propTypes = {
-  masterExerciseList: PropTypes.object
+  masterExerciseList: PropTypes.object,
+  setList: PropTypes.array,
+  onInputChange: PropTypes.func
 };
 
 export default ExerciseList;

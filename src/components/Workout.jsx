@@ -57,7 +57,7 @@ function Workout(props) {
           type="text"
           placeholder="Enter Workout Title"
           name="workoutTitleInput"
-          onChange={(event) => {props.onInputChange(event)}}
+          onChange={(event) => {props.onInputChange(event, ' ')}}
           value={props.workoutTitleInput}
           ref={(input) => {_workoutTitleInput = input}}
         />
@@ -66,8 +66,6 @@ function Workout(props) {
       </div>
       <ExerciseList
         masterExerciseList={props.masterExerciseList}
-        exerciseListInputs={props.exerciseListInputs}
-        setListInputs={props.setListInputs}
         onInputChange={props.onInputChange}
       />
       <div style={addExerciseIconConainerStyles}>
@@ -83,8 +81,6 @@ Workout.propTypes = {
   workoutTitleInput: PropTypes.string,
   dateInput: PropTypes.string,
   workoutNotesInput: PropTypes.string,
-  exerciseListInputs: PropTypes.array,
-  setListInputs: PropTypes.array,
   onInputChange: PropTypes.func
 };
 

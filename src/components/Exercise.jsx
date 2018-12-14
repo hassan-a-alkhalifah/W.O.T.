@@ -32,6 +32,8 @@ function Exercise(props) {
     height: '12px'
   };
 
+  let _exerciseName = '';
+
   return(
     <div style={exerciseStyles}>
       <style jsx>{`
@@ -111,7 +113,14 @@ function Exercise(props) {
       `}</style>
       <div style={exerciseInputStyles}>
         <div style={exerciseInputSpacerStyles}></div>
-        <input type="text" placeholder="Enter Exercise Name"/>
+        <input
+          type="text"
+          placeholder="Enter Exercise Name"
+          name="exerciseListInputs"
+          onChange={(event) => {props.onInputChange(event, props.exerciseId)}}
+          value={props.exerciseName}
+          ref={(input) => {_exerciseName = input}}
+        />
         <label>
           <input type="checkbox"/>
           <span></span>
@@ -142,7 +151,8 @@ function Exercise(props) {
 Exercise.propTypes = {
   exerciseId: PropTypes.string,
   exerciseName: PropTypes.string,
-  setList: PropTypes.object
+  setList: PropTypes.object,
+  onInputChange: PropTypes.func
 };
 
 export default Exercise;
