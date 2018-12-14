@@ -116,8 +116,7 @@ function Exercise(props) {
         <input
           type="text"
           placeholder="Enter Exercise Name"
-          name="exerciseListInputs"
-          onChange={(event) => {props.onInputChange(event, props.exerciseId)}}
+          onChange={(event) => {props.onInputChange(event, 'exercise', props.exerciseId)}}
           value={props.exerciseName}
           ref={(input) => {_exerciseName = input}}
         />
@@ -139,6 +138,7 @@ function Exercise(props) {
       </div>
       <SetList
         setList={props.setList}
+        exerciseId={props.exerciseId}
         onInputChange={props.onInputChange}
       />
       <div style={addSetIconContainerStyles}>
