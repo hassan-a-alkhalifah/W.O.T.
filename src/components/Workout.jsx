@@ -35,6 +35,8 @@ function Workout(props) {
     height: '40px',
   };
 
+  let _workoutTitleInput = "";
+
   return(
     <div>
       <style jsx>{`
@@ -51,12 +53,22 @@ function Workout(props) {
       `}</style>
       <div style={workoutFormStyles}>
         <div style={spacerStyles}></div>
-        <input type="text" placeholder="Enter Workout Title"/>
+        <input
+          type="text"
+          placeholder="Enter Workout Title"
+          name="workoutTitleInput"
+          onChange={(event) => {props.onInputChange(event)}}
+          value={props.workoutTitleInput}
+          ref={(input) => {_workoutTitleInput = input}}
+        />
         <img src={calendarIcon} alt="Calendar Icon" style={calendarIconStyles}/>
         <img src={noteIcon} alt="Note Icon" style={noteIconStyles}/>
       </div>
       <ExerciseList
         masterExerciseList={props.masterExerciseList}
+        exerciseListInputs={props.exerciseListInputs}
+        setListInputs={props.setListInputs}
+        onInputChange={props.onInputChange}
       />
       <div style={addExerciseIconConainerStyles}>
         <img src={addExerciseIcon} alt="Add Exercise Icon" style={addExerciseIconStyles}/>
@@ -67,7 +79,13 @@ function Workout(props) {
 
 Workout.propTypes = {
   masterWorkoutList: PropTypes.object,
-  masterExerciseList: PropTypes.object
+  masterExerciseList: PropTypes.object,
+  workoutTitleInput: PropTypes.string,
+  dateInput: PropTypes.string,
+  workoutNotesInput: PropTypes.string,
+  exerciseListInputs: PropTypes.array,
+  setListInputs: PropTypes.array,
+  onInputChange: PropTypes.func
 };
 
 export default Workout;
