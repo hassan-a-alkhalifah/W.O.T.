@@ -62,8 +62,12 @@ class App extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
-  handleInputChange(event, inputId) {
-    if(inputId !== ' ') {
+  handleInputChange(event, inputName, inputId, exerciseId) {
+    if(inputName === 'workout') {
+      this.setState({
+        [event.target.name]: event.target.value
+      });
+    } else if(inputName === 'exercise') {
       const newExercise = Object.assign({}, this.state.masterExerciseList[inputId], {
         exerciseName: event.target.value
       });
@@ -73,9 +77,21 @@ class App extends React.Component {
       this.setState({
         masterExerciseList: newExerciseList
       });
-    } else {
+    } else if(inputName === 'weight') {
+      const newSet = Object.assign({}, this.state.masterExerciseList[exerciseId].setList[inputId], {
+        weight: event.target.value
+      });
+      const newSetList = Object.assign({}, this.state.masterExerciseList[exerciseId].setList, {
+        [inputId]: newSet
+      });
+      const newExercise = Object.assign({}, this.state.masterExerciseList[exerciseId], {
+        setList: newSetList
+      });
+      const newExerciseList = Object.assign({}, this.state.masterExerciseList, {
+        [exerciseId]: newExercise
+      });
       this.setState({
-        [event.target.name]: event.target.value
+        masterExerciseList: newExerciseList
       });
     }
   };
