@@ -14,6 +14,7 @@ function SetList(props) {
             setNumber={set.setNumber}
             weight={set.weight}
             reps={set.reps}
+            exerciseId={props.exerciseId}
             onInputChange={props.onInputChange}
           />
         );
@@ -24,6 +25,7 @@ function SetList(props) {
 
 SetList.propTypes = {
   setList: PropTypes.object,
+  exerciseId: PropTypes.string,
   onInputChange: PropTypes.func
 };
 
