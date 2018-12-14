@@ -12,6 +12,7 @@ function Set(props) {
   };
 
   let _weight = '';
+  let _reps = '';
 
   return(
     <div style={setContainerStyles}>
@@ -89,7 +90,12 @@ function Set(props) {
           value={props.weight}
           ref={(input) => {_weight = input}}
         />
-        <input/>
+        <input
+          type="number"
+          onChange={(event) => {props.onInputChange(event, 'reps', props.setId, props.exerciseId)}}
+          value={props.reps}
+          ref={(input) => {_reps = input}}
+        />
       </div>
       <label>
         <input type="checkbox"/>
