@@ -139,6 +139,7 @@ function Exercise(props) {
       </div>
       <SetList
         setList={props.setList}
+        onInputChange={props.onInputChange}
       />
       <div style={addSetIconContainerStyles}>
         <div style={addSetIconSpacerStyles}></div>
