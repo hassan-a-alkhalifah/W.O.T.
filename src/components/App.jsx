@@ -110,7 +110,7 @@ class App extends React.Component {
         masterExerciseList: newExerciseList
       });
     }
-  };
+  }
 
   render() {
     return(

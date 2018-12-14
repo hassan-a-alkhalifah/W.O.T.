@@ -35,7 +35,7 @@ function Workout(props) {
     height: '40px',
   };
 
-  let _workoutTitleInput = "";
+  let _workoutTitleInput = '';
 
   return(
     <div>
@@ -57,9 +57,9 @@ function Workout(props) {
           type="text"
           placeholder="Enter Workout Title"
           name="workoutTitleInput"
-          onChange={(event) => {props.onInputChange(event, 'workout')}}
+          onChange={(event) => {props.onInputChange(event, 'workout');}}
           value={props.workoutTitleInput}
-          ref={(input) => {_workoutTitleInput = input}}
+          ref={(input) => {_workoutTitleInput = input;}}
         />
         <img src={calendarIcon} alt="Calendar Icon" style={calendarIconStyles}/>
         <img src={noteIcon} alt="Note Icon" style={noteIconStyles}/>

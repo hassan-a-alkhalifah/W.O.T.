@@ -116,9 +116,9 @@ function Exercise(props) {
         <input
           type="text"
           placeholder="Enter Exercise Name"
-          onChange={(event) => {props.onInputChange(event, 'exercise', props.exerciseId)}}
+          onChange={(event) => {props.onInputChange(event, 'exercise', props.exerciseId);}}
           value={props.exerciseName}
-          ref={(input) => {_exerciseName = input}}
+          ref={(input) => {_exerciseName = input;}}
         />
         <label>
           <input type="checkbox"/>
