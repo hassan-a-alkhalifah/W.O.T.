@@ -10,6 +10,11 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      workoutTitleInput: '',
+      dateInput: '',
+      workoutNotesInput: '',
+      exerciseListInputs: [],
+      setListInputs: [],
       masterWorkoutList: {
         1: {
           id: null,
@@ -55,7 +60,18 @@ class App extends React.Component {
       },
       selectedWorkoutId: 1
     };
+
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
+
+  handleInputChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value
+    }, () => {
+      console.log(this.state.workoutTitleInput);
+    });
+  };
+
   render() {
     return(
       <div>
@@ -67,6 +83,12 @@ class App extends React.Component {
               <Workout
                 masterWorkoutList={this.state.masterWorkoutList}
                 masterExerciseList={this.state.masterExerciseList}
+                workoutTitleInput={this.state.workoutTitleInput}
+                dateInput={this.state.dateInput}
+                workoutNotesInput={this.state.workoutNotesInput}
+                exerciseListInputs={this.state.exerciseListInputs}
+                setListInputs={this.state.setListInputs}
+                onInputChange={this.handleInputChange}
               />
             }
           />
