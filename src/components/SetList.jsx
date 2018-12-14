@@ -14,6 +14,7 @@ function SetList(props) {
             setNumber={set.setNumber}
             weight={set.weight}
             reps={set.reps}
+            onInputChange={props.onInputChange}
           />
         );
       })}
@@ -22,7 +23,8 @@ function SetList(props) {
 }
 
 SetList.propTypes = {
-  setList: PropTypes.object
+  setList: PropTypes.object,
+  onInputChange: PropTypes.func
 };
 
 export default SetList;
