@@ -93,6 +93,22 @@ class App extends React.Component {
       this.setState({
         masterExerciseList: newExerciseList
       });
+    } else {
+      const newSet = Object.assign({}, this.state.masterExerciseList[exerciseId].setList[inputId], {
+        reps: event.target.value
+      });
+      const newSetList = Object.assign({}, this.state.masterExerciseList[exerciseId].setList, {
+        [inputId]: newSet
+      });
+      const newExercise = Object.assign({}, this.state.masterExerciseList[exerciseId], {
+        setList: newSetList
+      });
+      const newExerciseList = Object.assign({}, this.state.masterExerciseList, {
+        [exerciseId]: newExercise
+      });
+      this.setState({
+        masterExerciseList: newExerciseList
+      });
     }
   };
 
