@@ -139,8 +139,6 @@ class App extends React.Component {
     });
     this.setState({
       masterExerciseList: newExerciseList
-    }, () => {
-      console.log(this.state.masterExerciseList);
     });
   }
 
