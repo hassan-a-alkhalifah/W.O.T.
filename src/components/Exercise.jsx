@@ -143,7 +143,14 @@ function Exercise(props) {
       />
       <div style={addSetIconContainerStyles}>
         <div style={addSetIconSpacerStyles}></div>
-        <img src={addSetIcon} alt="Add Set Icon" style={addSetIconStyles}/>
+        <img
+          src={addSetIcon}
+          alt="Add Set Icon"
+          style={addSetIconStyles}
+          onClick={() => {
+            props.onAddingNewSet(props.exerciseId);
+          }}
+        />
       </div>
     </div>
   );
@@ -153,7 +160,8 @@ Exercise.propTypes = {
   exerciseId: PropTypes.string,
   exerciseName: PropTypes.string,
   setList: PropTypes.object,
-  onInputChange: PropTypes.func
+  onInputChange: PropTypes.func,
+  onAddingNewSet: PropTypes.func
 };
 
 export default Exercise;
