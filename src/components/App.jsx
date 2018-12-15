@@ -8,8 +8,11 @@ import Footer from './Footer';
 import { v4 } from 'uuid';
 
 class App extends React.Component {
+
   constructor() {
     super();
+    this.initialExerciseId = v4();
+    this.initialSetId = v4();
     this.state = {
       workoutTitleInput: '',
       dateInput: '',
@@ -26,30 +29,10 @@ class App extends React.Component {
         }
       },
       masterExerciseList: {
-        1: {
-          id: 1,
-          exerciseName: 'test',
-          setList: {
-            1: {
-              id: 1,
-              setNumber: 1,
-              weight: '',
-              reps: ''
-            },
-            2: {
-              id: 2,
-              setNumber: 2,
-              weight: '',
-              reps: ''
-            }
-          }
-        },
-        2: {
-          id: 2,
+        [this.initialExerciseId]: {
           exerciseName: '',
           setList: {
-            1: {
-              id: 1,
+            [this.initialSetId]: {
               setNumber: 1,
               weight: '',
               reps: ''
@@ -63,7 +46,7 @@ class App extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleAddingNewExercise = this.handleAddingNewExercise.bind(this);
     this.handleAddingNewSet = this.handleAddingNewSet.bind(this);
-  }
+  };
 
   handleInputChange(event, inputName, inputId, exerciseId) {
     if(inputName === 'workout') {
