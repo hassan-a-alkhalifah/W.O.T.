@@ -5,6 +5,7 @@ import Header from './Header';
 import Workout from './Workout';
 import ExerciseArchives from './ExerciseArchives';
 import Footer from './Footer';
+import { v4 } from 'uuid';
 
 class App extends React.Component {
   constructor() {
@@ -60,6 +61,8 @@ class App extends React.Component {
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleAddingNewExercise = this.handleAddingNewExercise.bind(this);
+    this.handleAddingNewSet = this.handleAddingNewSet.bind(this);
   }
 
   handleInputChange(event, inputName, inputId, exerciseId) {
@@ -110,7 +113,53 @@ class App extends React.Component {
         masterExerciseList: newExerciseList
       });
     }
-  }
+  };
+
+  handleAddingNewExercise() {
+    const newExerciseId = v4();
+    const newSetId = v4();
+    const newExerciseList = Object.assign({}, this.state.masterExerciseList, {
+      [newExerciseId]: {
+        id: newExerciseId,
+        exerciseName: '',
+        setList: {
+          [newSetId]: {
+            id: newSetId,
+            setNumber: 1,
+            weight: '',
+            reps: ''
+          }
+        }
+      }
+    });
+    this.setState({
+      masterExerciseList: newExerciseList
+    });
+  };
+
+  handleAddingNewSet(exerciseId) {
+    const newSetId = v4();
+    const newSetNumber = Object.keys(this.state.masterExerciseList[exerciseId].setList).length + 1;
+    const newSetList = Object.assign({}, this.state.masterExerciseList[exerciseId].setList, {
+      [newSetId]: {
+        id: newSetId,
+        setNumber: newSetNumber,
+        weight: '',
+        reps: ''
+      }
+    });
+    const newExercise = Object.assign({}, this.state.masterExerciseList[exerciseId], {
+      setList: newSetList
+    });
+    const newExerciseList = Object.assign({}, this.state.masterExerciseList, {
+      [exerciseId]: newExercise
+    })
+    this.setState({
+      masterExerciseList: newExerciseList
+    }, () => {
+      console.log(this.state.masterExerciseList);
+    });
+  };
 
   render() {
     return(
@@ -127,6 +176,8 @@ class App extends React.Component {
                 dateInput={this.state.dateInput}
                 workoutNotesInput={this.state.workoutNotesInput}
                 onInputChange={this.handleInputChange}
+                onAddingNewExercise={this.handleAddingNewExercise}
+                onAddingNewSet={this.handleAddingNewSet}
               />
             }
           />
