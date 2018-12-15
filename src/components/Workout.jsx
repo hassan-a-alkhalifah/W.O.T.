@@ -28,7 +28,8 @@ function Workout(props) {
   };
   const addExerciseIconConainerStyles = {
     width: '100%',
-    textAlign: 'center'
+    textAlign: 'center',
+    marginBottom: '75px'
   };
   const addExerciseIconStyles = {
     width: '40px',
@@ -67,9 +68,17 @@ function Workout(props) {
       <ExerciseList
         masterExerciseList={props.masterExerciseList}
         onInputChange={props.onInputChange}
+        onAddingNewSet={props.onAddingNewSet}
       />
       <div style={addExerciseIconConainerStyles}>
-        <img src={addExerciseIcon} alt="Add Exercise Icon" style={addExerciseIconStyles}/>
+        <img
+          src={addExerciseIcon}
+          alt="Add Exercise Icon"
+          style={addExerciseIconStyles}
+          onClick={() => {
+            props.onAddingNewExercise();
+          }}
+        />
       </div>
     </div>
   );
@@ -81,7 +90,9 @@ Workout.propTypes = {
   workoutTitleInput: PropTypes.string,
   dateInput: PropTypes.string,
   workoutNotesInput: PropTypes.string,
-  onInputChange: PropTypes.func
+  onInputChange: PropTypes.func,
+  onAddingNewExercise: PropTypes.func,
+  onAddingNewSet: PropTypes.func
 };
 
 export default Workout;
