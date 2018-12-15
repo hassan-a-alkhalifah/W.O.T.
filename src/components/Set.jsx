@@ -19,14 +19,14 @@ function Set(props) {
 
   if(props.setNumber !== 1) {
     ifNotFirstSetCheckboxNeeded =
-    <label className="setCheckBoxContainer">
-      <input type="checkbox"/>
-      <span></span>
-    </label>;
+      <label className="setCheckBoxContainer">
+        <input type="checkbox"/>
+        <span></span>
+      </label>;
   }
   if(Object.keys(props.setList).length !== 1) {
     ifNotFirstSetSpacerNeeded =
-    <div style={setContainerSpacerStyles}></div>;
+      <div style={setContainerSpacerStyles}></div>;
   }
 
   return(

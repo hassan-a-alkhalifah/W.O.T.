@@ -46,7 +46,7 @@ class App extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleAddingNewExercise = this.handleAddingNewExercise.bind(this);
     this.handleAddingNewSet = this.handleAddingNewSet.bind(this);
-  };
+  }
 
   handleInputChange(event, inputName, inputId, exerciseId) {
     if(inputName === 'workout') {
@@ -96,7 +96,7 @@ class App extends React.Component {
         masterExerciseList: newExerciseList
       });
     }
-  };
+  }
 
   handleAddingNewExercise() {
     const newExerciseId = v4();
@@ -118,7 +118,7 @@ class App extends React.Component {
     this.setState({
       masterExerciseList: newExerciseList
     });
-  };
+  }
 
   handleAddingNewSet(exerciseId) {
     const newSetId = v4();
@@ -136,13 +136,13 @@ class App extends React.Component {
     });
     const newExerciseList = Object.assign({}, this.state.masterExerciseList, {
       [exerciseId]: newExercise
-    })
+    });
     this.setState({
       masterExerciseList: newExerciseList
     }, () => {
       console.log(this.state.masterExerciseList);
     });
-  };
+  }
 
   render() {
     return(
