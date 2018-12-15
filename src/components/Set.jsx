@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../assets/styles/setStyles.css';
 
 function Set(props) {
   const setContainerStyles = {
@@ -13,94 +14,44 @@ function Set(props) {
 
   let _weight = '';
   let _reps = '';
+  let ifNotFirstSetCheckboxNeeded = null;
+  let ifNotFirstSetSpacerNeeded = null;
+
+  if(props.setNumber !== 1) {
+    ifNotFirstSetCheckboxNeeded =
+    <label className="setCheckBoxContainer">
+      <input type="checkbox"/>
+      <span></span>
+    </label>;
+  }
+  if(Object.keys(props.setList).length !== 1) {
+    ifNotFirstSetSpacerNeeded =
+    <div style={setContainerSpacerStyles}></div>;
+  }
 
   return(
     <div style={setContainerStyles}>
-      <style jsx>{`
-        .setInputContainer {
-          width: 198px;
-          height: 34px;
-          border: 1px solid #3498DB;
-          margin-top: -1px;
-          display: flex;
-          justify-content: center;
-        }
-        .setInputContainer div {
-          width: 58px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        .setInputContainer input {
-          padding-left: 13px;
-        }
-        .setInputContainer input:nth-child(2) {
-          width: 67px;
-          border-top: none;
-          border-right: 1px solid #3498DB;
-          border-bottom: none;
-          border-left: 1px solid #3498DB;
-        }
-        .setInputContainer input:nth-child(3) {
-          width: 45px;
-          border: none;
-        }
-        input[type="checkbox"] + span,
-        input[type="checkbox"] + span::before
-        {
-            display: inline-block;
-            vertical-align: middle;
-        }
-        label
-        {
-            cursor: pointer;
-            margin-left: 12px;
-        }
-        input[type="checkbox"]
-        {
-            opacity: 0;
-            position: absolute;
-        }
-        input[type="checkbox"] + span::before
-        {
-            content: "";
-            width: 13px;
-            height: 13px;
-            margin: 0 4px 0 0;
-            border: solid 1px #000;
-            line-height: 14px;
-            text-align: center;
-            color: #000;
-            font-size: 12px;
-            font-weight: 900;
-        }
-        input[type="checkbox"]:checked + span::before
-        {
-            content: "X";
-        }
-      `}</style>
-      <div style={setContainerSpacerStyles}></div>
+      {ifNotFirstSetSpacerNeeded}
       <div className="setInputContainer">
         <div>
           <p>{props.setNumber}</p>
         </div>
         <input
+          className="weightInput"
           type="number"
           onChange={(event) => {props.onInputChange(event, 'weight', props.setId, props.exerciseId);}}
           value={props.weight}
           ref={(input) => {_weight = input;}}
         />
         <input
+          className="repInput"
           type="number"
           onChange={(event) => {props.onInputChange(event, 'reps', props.setId, props.exerciseId);}}
           value={props.reps}
           ref={(input) => {_reps = input;}}
         />
       </div>
-      <label>
-        <input type="checkbox"/>
-        <span></span>
-      </label>
+      {ifNotFirstSetCheckboxNeeded}
     </div>
   );
 }
@@ -111,7 +62,8 @@ Set.propTypes = {
   weight: PropTypes.string,
   reps: PropTypes.string,
   exerciseId: PropTypes.string,
-  onInputChange: PropTypes.func
+  onInputChange: PropTypes.func,
+  setList: PropTypes.object
 };
 
 export default Set;
