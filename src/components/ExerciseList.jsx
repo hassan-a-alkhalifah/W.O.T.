@@ -21,6 +21,7 @@ function ExerciseList(props) {
             exerciseName={exercise.exerciseName}
             setList={exercise.setList}
             onInputChange={props.onInputChange}
+            onAddingNewSet={props.onAddingNewSet}
           />
         );
       })}
@@ -31,7 +32,8 @@ function ExerciseList(props) {
 ExerciseList.propTypes = {
   masterExerciseList: PropTypes.object,
   setList: PropTypes.array,
-  onInputChange: PropTypes.func
+  onInputChange: PropTypes.func,
+  onAddingNewSet: PropTypes.func
 };
 
 export default ExerciseList;
