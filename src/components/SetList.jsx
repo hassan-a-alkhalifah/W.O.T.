@@ -16,6 +16,7 @@ function SetList(props) {
             reps={set.reps}
             exerciseId={props.exerciseId}
             onInputChange={props.onInputChange}
+            setList={props.setList}
           />
         );
       })}
