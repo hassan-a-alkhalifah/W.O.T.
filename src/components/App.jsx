@@ -1,11 +1,12 @@
 import React from 'react';
 import Error404 from './Error404';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import Header from './Header';
 import Workout from './Workout';
 import ExerciseArchives from './ExerciseArchives';
 import Footer from './Footer';
 import { v4 } from 'uuid';
+import { connect } from 'react-redux';
 
 class App extends React.Component {
 
@@ -35,6 +36,7 @@ class App extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleAddingNewExercise = this.handleAddingNewExercise.bind(this);
     this.handleAddingNewSet = this.handleAddingNewSet.bind(this);
+    this.handleResetForm = this.handleResetForm.bind(this);
   }
 
   handleInputChange(event, inputName, inputId, exerciseId) {
@@ -131,10 +133,38 @@ class App extends React.Component {
     });
   }
 
+  handleResetForm() {
+    const newExerciseId = v4();
+    const newSetId = v4();
+    this.setState({
+      workoutTitleInput: '',
+      dateInput: '',
+      workoutNotesInput: '',
+      masterExerciseList: {
+        [newExerciseId]: {
+          exerciseName: '',
+          setList: {
+            [newSetId]: {
+              setNumber: 1,
+              weight: '',
+              reps: ''
+            }
+          }
+        }
+      }
+    });
+  }
+
   render() {
     return(
       <div>
-        <Header></Header>
+        <Header
+          workoutTitleInput={this.state.workoutTitleInput}
+          dateInput={this.state.dateInput}
+          workoutNotesInput={this.state.workoutNotesInput}
+          masterExerciseList={this.state.masterExerciseList}
+          onResetForm={this.handleResetForm}
+        />
         <Switch>
           <Route
             exact path='/'
@@ -164,4 +194,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default withRouter(connect()(App));
