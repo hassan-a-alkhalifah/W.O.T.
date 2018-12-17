@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-function PreviousExercise({ workoutTitle, date }) {
+function PreviousExercise({ workoutTitle, date, onAutoFillingEditForm, id }) {
 
   const previousExerciseStyles = {
     display: 'flex',
@@ -12,6 +13,9 @@ function PreviousExercise({ workoutTitle, date }) {
     width: '31px',
     height: '13px'
   };
+  const dateWorkoutTitleContainerStyles = {
+    display: 'flex'
+  }
 
   return(
     <div style={previousExerciseStyles}>
@@ -51,8 +55,17 @@ function PreviousExercise({ workoutTitle, date }) {
         }
       `}</style>
       <div style={workoutSpacerStyles}></div>
-      <p>{date}</p>
-      <p>{workoutTitle}</p>
+      <Link to="/">
+        <div
+          style={dateWorkoutTitleContainerStyles}
+          onClick={() => {
+            onAutoFillingEditForm(id);
+          }}
+        >
+          <p>{date}</p>
+          <p>{workoutTitle}</p>
+        </div>
+      </Link>
       <label>
         <input type="checkbox"/>
         <span></span>
@@ -64,7 +77,8 @@ function PreviousExercise({ workoutTitle, date }) {
 PreviousExercise.propTypes = {
   workoutTitle: PropTypes.string,
   date: PropTypes.string,
-  id: PropTypes.string
+  id: PropTypes.string,
+  onAutoFillingEditForm: PropTypes.func
 }
 
 export default PreviousExercise;
