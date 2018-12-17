@@ -17,17 +17,6 @@ class App extends React.Component {
       workoutTitleInput: '',
       dateInput: '',
       workoutNotesInput: '',
-      masterWorkoutList: {
-        1: {
-          id: 1,
-          workoutTitle: '',
-          date: '',
-          workoutNote: '',
-          exerciseList: [
-            1
-          ]
-        }
-      },
       masterExerciseList: {
         [this.initialExerciseId]: {
           exerciseName: '',
@@ -151,7 +140,6 @@ class App extends React.Component {
             exact path='/'
             render={()=>
               <Workout
-                masterWorkoutList={this.state.masterWorkoutList}
                 masterExerciseList={this.state.masterExerciseList}
                 workoutTitleInput={this.state.workoutTitleInput}
                 dateInput={this.state.dateInput}

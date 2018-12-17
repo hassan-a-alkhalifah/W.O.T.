@@ -85,7 +85,6 @@ function Workout(props) {
 }
 
 Workout.propTypes = {
-  masterWorkoutList: PropTypes.object,
   masterExerciseList: PropTypes.object,
   workoutTitleInput: PropTypes.string,
   dateInput: PropTypes.string,
