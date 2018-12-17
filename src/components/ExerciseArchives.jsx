@@ -20,13 +20,15 @@ function ExerciseArchives(props) {
       <div style={exerciseArchivesTitleStyles}>Exercise Archives</div>
       <PreviousExerciseList
         masterWorkoutList={props.masterWorkoutList}
+        onAutoFillingEditForm={props.onAutoFillingEditForm}
       />
     </div>
   );
 }
 
 ExerciseArchives.propTypes = {
-  masterWorkoutList: PropTypes.object
+  masterWorkoutList: PropTypes.object,
+  onAutoFillingEditForm: PropTypes.func
 }
 
 
