@@ -3,7 +3,7 @@ import homeIcon from '../assets/images/home-icon.png';
 import archiveIcon from '../assets/images/archive-icon.png';
 import finishIcon from '../assets/images/finish-icon.png';
 import deleteIcon from '../assets/images/delete-icon.png';
-import { addWorkout } from './../actions';
+import { addWorkout, editWorkout } from './../actions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -44,7 +44,12 @@ function Header(props) {
 
   function newWorkoutFormSubmission() {
     const { dispatch } = props;
-    dispatch(addWorkout(props.workoutTitleInput, props.dateInput, props.workoutNotesInput, props.masterExerciseList));
+    if(props.selectedWorkoutToBeEditedId === null) {
+      dispatch(addWorkout(props.workoutTitleInput, props.dateInput, props.workoutNotesInput, props.masterExerciseList));
+    } else {
+      dispatch(editWorkout(props.selectedWorkoutToBeEditedId, props.workoutTitleInput, props.dateInput, props.workoutNotesInput, props.masterExerciseList));
+      props.onResettingSelectedWorkoutToBeEditedId();
+    }
     props.onResetForm();
   }
 
@@ -84,7 +89,9 @@ Header.propTypes = {
   dateInput: PropTypes.string,
   workoutNotesInput: PropTypes.string,
   masterExerciseList: PropTypes.object,
-  onResetForm: PropTypes.func
+  onResetForm: PropTypes.func,
+  selectedWorkoutToBeEditedId: PropTypes.string,
+  onResettingSelectedWorkoutToBeEditedId: PropTypes.func
 };
 
 export default connect()(Header);
