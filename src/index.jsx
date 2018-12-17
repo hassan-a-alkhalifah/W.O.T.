@@ -9,6 +9,10 @@ import rootReducer from './reducers/index';
 
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
+let unsubscribe = store.subscribe(() =>
+  console.log(store.getState())
+);
+
 const render = (Component) => {
   ReactDOM.render(
     <HashRouter>
