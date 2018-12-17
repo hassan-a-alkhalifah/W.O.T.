@@ -6,6 +6,7 @@ import deleteIcon from '../assets/images/delete-icon.png';
 import { addWorkout } from './../actions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function Header(props) {
   const mainTitleContainerSyles = {
@@ -58,8 +59,12 @@ function Header(props) {
         <h1>W.O.T.</h1>
       </div>
       <div style={navigationBarStyles}>
-        <img src={homeIcon} alt="Home Icon" style={homeIconStyles}/>
-        <img src={archiveIcon} alt="Archive Icon" style={archiveIconStyles}/>
+        <Link to="/">
+          <img src={homeIcon} alt="Home Icon" style={homeIconStyles}/>
+        </Link>
+        <Link to="/exerciseArchives">
+          <img src={archiveIcon} alt="Archive Icon" style={archiveIconStyles}/>
+        </Link>
         <img
           src={finishIcon}
           alt="Finish Icon"
