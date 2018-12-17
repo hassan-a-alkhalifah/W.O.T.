@@ -3,8 +3,11 @@ import homeIcon from '../assets/images/home-icon.png';
 import archiveIcon from '../assets/images/archive-icon.png';
 import finishIcon from '../assets/images/finish-icon.png';
 import deleteIcon from '../assets/images/delete-icon.png';
+import { addWorkout } from './../actions';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-function Header() {
+function Header(props) {
   const mainTitleContainerSyles = {
     height: '68px',
     backgroundColor: '#000',
@@ -38,6 +41,12 @@ function Header() {
     height: '30px'
   };
 
+  function newWorkoutFormSubmission() {
+    const { dispatch } = props;
+    dispatch(addWorkout(props.workoutTitleInput, props.dateInput, props.workoutNotesInput, props.masterExerciseList));
+    props.onResetForm();
+  }
+
   return(
     <div>
       <style jsx>{`
@@ -51,11 +60,26 @@ function Header() {
       <div style={navigationBarStyles}>
         <img src={homeIcon} alt="Home Icon" style={homeIconStyles}/>
         <img src={archiveIcon} alt="Archive Icon" style={archiveIconStyles}/>
-        <img src={finishIcon} alt="Finish Icon" style={finishIconStyles}/>
+        <img
+          src={finishIcon}
+          alt="Finish Icon"
+          style={finishIconStyles}
+          onClick={() => {
+            newWorkoutFormSubmission();
+          }}
+        />
         <img src={deleteIcon} alt=" Delete Icon" style={deleteIconStyles}/>
       </div>
     </div>
   );
 }
 
-export default Header;
+Header.propTypes = {
+  workoutTitleInput: PropTypes.string,
+  dateInput: PropTypes.string,
+  workoutNotesInput: PropTypes.string,
+  masterExerciseList: PropTypes.object,
+  onResetForm: PropTypes.func
+};
+
+export default connect()(Header);
