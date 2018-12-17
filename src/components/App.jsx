@@ -8,11 +8,12 @@ import Footer from './Footer';
 import { v4 } from 'uuid';
 import { connect } from 'react-redux';
 import * as actions from './../actions';
+import PropTypes from 'prop-types';
 
 class App extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.initialExerciseId = v4();
     this.initialSetId = v4();
     this.state = {
@@ -43,7 +44,7 @@ class App extends React.Component {
   componentWillMount() {
     const { dispatch } = this.props;
     const { watchFirebaseWorkoutRef } = actions;
-    dispatch(watchFirebasWorkouttRef());
+    dispatch(watchFirebaseWorkoutRef());
   }
 
   handleInputChange(event, inputName, inputId, exerciseId) {
@@ -190,7 +191,9 @@ class App extends React.Component {
           <Route
             exact path='/exerciseArchives'
             render={()=>
-              <ExerciseArchives />
+              <ExerciseArchives
+                masterWorkoutList={this.props.masterWorkoutList}
+              />
             }
           />
           <Route component={Error404}/>
@@ -201,4 +204,14 @@ class App extends React.Component {
   }
 }
 
-export default withRouter(connect()(App));
+App.propTypes = {
+  masterWorkoutList: PropTypes.object
+}
+
+const mapStateToProps = state => {
+  return {
+    masterWorkoutList: state.masterWorkoutList
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(App));
