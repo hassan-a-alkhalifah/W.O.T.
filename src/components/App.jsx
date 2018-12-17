@@ -7,6 +7,7 @@ import ExerciseArchives from './ExerciseArchives';
 import Footer from './Footer';
 import { v4 } from 'uuid';
 import { connect } from 'react-redux';
+import * as actions from './../actions';
 
 class App extends React.Component {
 
@@ -37,6 +38,12 @@ class App extends React.Component {
     this.handleAddingNewExercise = this.handleAddingNewExercise.bind(this);
     this.handleAddingNewSet = this.handleAddingNewSet.bind(this);
     this.handleResetForm = this.handleResetForm.bind(this);
+  }
+
+  componentWillMount() {
+    const { dispatch } = this.props;
+    const { watchFirebaseWorkoutRef } = actions;
+    dispatch(watchFirebasWorkouttRef());
   }
 
   handleInputChange(event, inputName, inputId, exerciseId) {
