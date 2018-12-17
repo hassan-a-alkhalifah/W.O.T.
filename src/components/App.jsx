@@ -32,19 +32,22 @@ class App extends React.Component {
           }
         }
       },
-      selectedWorkoutId: 1
+      selectedWorkoutToBeEditedId: null
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleAddingNewExercise = this.handleAddingNewExercise.bind(this);
     this.handleAddingNewSet = this.handleAddingNewSet.bind(this);
     this.handleResetForm = this.handleResetForm.bind(this);
+    this.handleAutofillingEditForm = this.handleAutofillingEditForm.bind(this);
+    this.handleResettingSelectedWorkoutToBeEditedId = this.handleResettingSelectedWorkoutToBeEditedId.bind(this);
   }
 
   componentWillMount() {
     const { dispatch } = this.props;
-    const { watchFirebaseWorkoutRef } = actions;
+    const { watchFirebaseWorkoutRef, watchFirebaseEditWorkoutRef } = actions;
     dispatch(watchFirebaseWorkoutRef());
+    dispatch(watchFirebaseEditWorkoutRef());
   }
 
   handleInputChange(event, inputName, inputId, exerciseId) {
@@ -163,6 +166,23 @@ class App extends React.Component {
     });
   }
 
+  handleAutofillingEditForm(selectedWorkoutId) {
+    const selectedWorkout = Object.assign({}, this.props.masterWorkoutList[selectedWorkoutId]);
+    this.setState({
+      workoutTitleInput: selectedWorkout.workoutTitle,
+      dateInput: selectedWorkout.date,
+      workoutNotesInput: selectedWorkout.workoutNotes,
+      masterExerciseList: selectedWorkout.masterExerciseList,
+      selectedWorkoutToBeEditedId: selectedWorkoutId
+    });
+  }
+
+  handleResettingSelectedWorkoutToBeEditedId() {
+    this.setState({
+      selectedWorkoutToBeEditedId: null
+    });
+  }
+
   render() {
     return(
       <div>
@@ -172,6 +192,8 @@ class App extends React.Component {
           workoutNotesInput={this.state.workoutNotesInput}
           masterExerciseList={this.state.masterExerciseList}
           onResetForm={this.handleResetForm}
+          selectedWorkoutToBeEditedId={this.state.selectedWorkoutToBeEditedId}
+          onResettingSelectedWorkoutToBeEditedId={this.handleResettingSelectedWorkoutToBeEditedId}
         />
         <Switch>
           <Route
@@ -193,6 +215,7 @@ class App extends React.Component {
             render={()=>
               <ExerciseArchives
                 masterWorkoutList={this.props.masterWorkoutList}
+                onAutoFillingEditForm={this.handleAutofillingEditForm}
               />
             }
           />
