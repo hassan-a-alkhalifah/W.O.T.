@@ -3,9 +3,21 @@ import PreviousExerciseList from './PreviousExerciseList';
 import PropTypes from 'prop-types';
 
 function ExerciseArchives(props) {
+
+  const exerciseArchivesStyles = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '28px 0'
+  }
+  const exerciseArchivesTitleStyles = {
+    fontSize: '30px',
+    marginBottom: '28px'
+  };
+
   return(
-    <div>
-      <div>ExerciseArchives Component</div>
+    <div style={exerciseArchivesStyles}>
+      <div style={exerciseArchivesTitleStyles}>Exercise Archives</div>
       <PreviousExerciseList
         masterWorkoutList={props.masterWorkoutList}
       />
