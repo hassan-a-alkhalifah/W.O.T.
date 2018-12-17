@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import initialReducer from './initial-reducer';
+import workoutListReducer from './workout-list-reducer';
 
 const rootReducer = combineReducers({
-  initialReducer: initialReducer
+  workoutListReducer: workoutListReducer
 });
 
 export default rootReducer;
