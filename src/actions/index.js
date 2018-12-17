@@ -1,5 +1,5 @@
 import constants from './../constants';
-const { firebaseConfig } = constants;
+const { firebaseConfig, c } = constants;
 import Firebase from 'firebase';
 
 firebase.initializeApp(firebaseConfig);
@@ -12,4 +12,22 @@ export function addWorkout(workoutTitle, date, workoutNotes, masterExerciseList)
     workoutNotes: workoutNotes,
     masterExerciseList: masterExerciseList
   });
+}
+
+export function watchFirebaseWorkoutRef() {
+  return function(dispatch) {
+    workouts.on('child_added', data => {
+      const newWorkout = Object.assign({}, data.val(), {
+        id: data.getKey()
+      });
+      dispatch(receiveWorkout(newWorkout));
+    });
+  }
+}
+
+function receiveWorkout(workoutFromFirebase) {
+  return {
+    type: c.RECEIVE_WORKOUT,
+    workout: workoutFromFirebase
+  };
 }
