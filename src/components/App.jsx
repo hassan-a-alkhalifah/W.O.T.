@@ -57,6 +57,8 @@ class App extends React.Component {
     if(inputName === 'workout') {
       this.setState({
         [event.target.name]: event.target.value
+      }, () => {
+        console.log(this.state.dateInput);
       });
     } else if(inputName === 'exercise') {
       const newExercise = Object.assign({}, this.state.masterExerciseList[inputId], {
@@ -191,7 +193,7 @@ class App extends React.Component {
       this.setState({
         isArchiveAndFinishButtonsVisible: false
       });
-    } else if(event.target.name === 'homeIcon' && this.state.isArchiveAndFinishButtonsVisible === false) {
+    } else if(event.target.name !== 'archiveIcon' && this.state.isArchiveAndFinishButtonsVisible === false) {
       this.setState({
         isArchiveAndFinishButtonsVisible: true
       });
@@ -234,6 +236,7 @@ class App extends React.Component {
               <ExerciseArchives
                 masterWorkoutList={this.props.masterWorkoutList}
                 onAutoFillingEditForm={this.handleAutofillingEditForm}
+                onSettingArchiveAndFinishButtonsVisiblity={this.handleSettingArchiveAndFinishButtonsVisiblity}
               />
             }
           />
