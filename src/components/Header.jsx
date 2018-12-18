@@ -53,6 +53,12 @@ function Header(props) {
     props.onResetForm();
   }
 
+  let deletedButton = null
+  if(props.isDeleteButtonVisible) {
+    deletedButton =
+    <img src={deleteIcon} alt=" Delete Icon" style={deleteIconStyles}/>;
+  }
+
   return(
     <div>
       <style jsx>{`
@@ -78,7 +84,7 @@ function Header(props) {
             newWorkoutFormSubmission();
           }}
         />
-        <img src={deleteIcon} alt=" Delete Icon" style={deleteIconStyles}/>
+      {deletedButton}
       </div>
     </div>
   );
@@ -91,7 +97,8 @@ Header.propTypes = {
   masterExerciseList: PropTypes.object,
   onResetForm: PropTypes.func,
   selectedWorkoutToBeEditedId: PropTypes.string,
-  onResettingSelectedWorkoutToBeEditedId: PropTypes.func
+  onResettingSelectedWorkoutToBeEditedId: PropTypes.func,
+  isDeleteButtonVisible: PropTypes.bool
 };
 
 export default connect()(Header);
