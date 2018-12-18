@@ -12,7 +12,7 @@ export function addWorkout(workoutTitle, date, workoutNotes, masterExerciseList)
     workoutNotes: workoutNotes,
     masterExerciseList: masterExerciseList
   });
-};
+}
 
 export function editWorkout(selectedWorkoutToBeEditedId, workoutTitle, date, workoutNotes, masterExerciseList) {
   return function(dispatch) {
@@ -23,7 +23,7 @@ export function editWorkout(selectedWorkoutToBeEditedId, workoutTitle, date, wor
       masterExerciseList: masterExerciseList
     });
   };
-};
+}
 
 export function watchFirebaseWorkoutRef() {
   return function(dispatch) {
@@ -33,8 +33,8 @@ export function watchFirebaseWorkoutRef() {
       });
       dispatch(receiveWorkout(newWorkout));
     });
-  }
-};
+  };
+}
 
 export function watchFirebaseEditWorkoutRef() {
   return function(dispatch) {
@@ -44,12 +44,12 @@ export function watchFirebaseEditWorkoutRef() {
       });
       dispatch(receiveWorkout(newWorkout));
     });
-  }
-};
+  };
+}
 
 function receiveWorkout(workoutFromFirebase) {
   return {
     type: c.RECEIVE_WORKOUT,
     workout: workoutFromFirebase
   };
-};
+}

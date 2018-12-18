@@ -24,7 +24,7 @@ function PreviousExerciseList(props) {
 PreviousExerciseList.propTypes = {
   masterWorkoutList: PropTypes.object,
   onAutoFillingEditForm: PropTypes.func
-}
+};
 
 
 export default PreviousExerciseList;

@@ -229,12 +229,12 @@ class App extends React.Component {
 
 App.propTypes = {
   masterWorkoutList: PropTypes.object
-}
+};
 
 const mapStateToProps = state => {
   return {
     masterWorkoutList: state.masterWorkoutList
-  }
-}
+  };
+};
 
 export default withRouter(connect(mapStateToProps)(App));

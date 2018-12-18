@@ -15,7 +15,7 @@ function PreviousExercise({ workoutTitle, date, onAutoFillingEditForm, id }) {
   };
   const dateWorkoutTitleContainerStyles = {
     display: 'flex'
-  }
+  };
 
   return(
     <div style={previousExerciseStyles}>
@@ -79,6 +79,6 @@ PreviousExercise.propTypes = {
   date: PropTypes.string,
   id: PropTypes.string,
   onAutoFillingEditForm: PropTypes.func
-}
+};
 
 export default PreviousExercise;

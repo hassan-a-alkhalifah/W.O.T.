@@ -9,7 +9,7 @@ function ExerciseArchives(props) {
     flexDirection: 'column',
     alignItems: 'center',
     padding: '28px 0'
-  }
+  };
   const exerciseArchivesTitleStyles = {
     fontSize: '30px',
     marginBottom: '28px'
@@ -29,7 +29,7 @@ function ExerciseArchives(props) {
 ExerciseArchives.propTypes = {
   masterWorkoutList: PropTypes.object,
   onAutoFillingEditForm: PropTypes.func
-}
+};
 
 
 export default ExerciseArchives;
