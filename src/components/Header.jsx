@@ -9,6 +9,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 function Header(props) {
+  const headerStyles = {
+    width: '100%',
+    position: 'fixed'
+  }
   const mainTitleContainerSyles = {
     height: '68px',
     backgroundColor: '#000',
@@ -86,7 +90,7 @@ function Header(props) {
   }
 
   return(
-    <div>
+    <div style={headerStyles}>
       <style jsx>{`
           img {
             width: 29px;
@@ -104,6 +108,9 @@ function Header(props) {
             name="homeIcon"
             onClick={(event) => {
               props.onSettingArchiveAndFinishButtonsVisiblity(event);
+              if(props.selectedWorkoutToBeEditedId !== null) {
+                props.onResetForm();
+              }
             }}
           />
         </Link>
