@@ -33,7 +33,8 @@ class App extends React.Component {
         }
       },
       selectedWorkoutToBeEditedId: null,
-      isDeleteButtonVisible: false
+      isDeleteButtonVisible: false,
+      isArchiveAndFinishButtonsVisible: true
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -42,6 +43,7 @@ class App extends React.Component {
     this.handleResetForm = this.handleResetForm.bind(this);
     this.handleAutofillingEditForm = this.handleAutofillingEditForm.bind(this);
     this.handleResettingSelectedWorkoutToBeEditedId = this.handleResettingSelectedWorkoutToBeEditedId.bind(this);
+    this.handleSettingArchiveAndFinishButtonsVisiblity = this.handleSettingArchiveAndFinishButtonsVisiblity.bind(this);
   }
 
   componentWillMount() {
@@ -184,6 +186,18 @@ class App extends React.Component {
     });
   }
 
+  handleSettingArchiveAndFinishButtonsVisiblity(event) {
+    if(event.target.name === 'archiveIcon') {
+      this.setState({
+        isArchiveAndFinishButtonsVisible: false
+      });
+    } else if(event.target.name === 'homeIcon' && this.state.isArchiveAndFinishButtonsVisible === false) {
+      this.setState({
+        isArchiveAndFinishButtonsVisible: true
+      });
+    }
+  }
+
   render() {
     return(
       <div>
@@ -196,6 +210,8 @@ class App extends React.Component {
           selectedWorkoutToBeEditedId={this.state.selectedWorkoutToBeEditedId}
           onResettingSelectedWorkoutToBeEditedId={this.handleResettingSelectedWorkoutToBeEditedId}
           isDeleteButtonVisible={this.state.isDeleteButtonVisible}
+          isArchiveAndFinishButtonsVisible={this.state.isArchiveAndFinishButtonsVisible}
+          onSettingArchiveAndFinishButtonsVisiblity={this.handleSettingArchiveAndFinishButtonsVisiblity}
         />
         <Switch>
           <Route
@@ -230,7 +246,8 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  masterWorkoutList: PropTypes.object
+  masterWorkoutList: PropTypes.object,
+  dispatch: PropTypes.func
 };
 
 const mapStateToProps = state => {
