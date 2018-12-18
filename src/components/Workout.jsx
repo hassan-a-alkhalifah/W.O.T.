@@ -46,10 +46,6 @@ function Workout(props) {
     height: '40px',
   };
 
-  let _workoutTitleInput = '';
-  let _dateInput = '';
-  let _workoutNotesInput = '';
-
   let textArea = null;
   if(props.isTextAreaVisible) {
     textArea =
@@ -61,7 +57,6 @@ function Workout(props) {
         name="workoutNotesInput"
         onChange={(event) => {props.onInputChange(event, 'workout');}}
         value={props.workoutNotesInput}
-        ref={(input) => {_workoutNotesInput = input;}}
       >
       </textarea>;
   }
@@ -89,7 +84,6 @@ function Workout(props) {
             name="workoutTitleInput"
             onChange={(event) => {props.onInputChange(event, 'workout');}}
             value={props.workoutTitleInput}
-            ref={(input) => {_workoutTitleInput = input;}}
           />
           <img
             src={noteIcon}
@@ -106,7 +100,6 @@ function Workout(props) {
           name="dateInput"
           onChange={(event) => {props.onInputChange(event, 'workout');}}
           value={props.dateInput}
-          ref={(input) => {_dateInput = input;}}
         />
         {textArea}
       </div>

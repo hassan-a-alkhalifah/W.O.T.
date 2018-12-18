@@ -32,8 +32,6 @@ function Exercise(props) {
     height: '12px'
   };
 
-  let _exerciseName = '';
-
   return(
     <div style={exerciseStyles}>
       <style jsx>{`
@@ -118,7 +116,6 @@ function Exercise(props) {
           placeholder="Enter Exercise Name"
           onChange={(event) => {props.onInputChange(event, 'exercise', props.exerciseId);}}
           value={props.exerciseName}
-          ref={(input) => {_exerciseName = input;}}
         />
         <label>
           <input type="checkbox"/>
