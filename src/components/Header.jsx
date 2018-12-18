@@ -53,10 +53,36 @@ function Header(props) {
     props.onResetForm();
   }
 
-  let deletedButton = null
+  let deletedButton = null;
   if(props.isDeleteButtonVisible) {
     deletedButton =
-    <img src={deleteIcon} alt=" Delete Icon" style={deleteIconStyles}/>;
+      <img src={deleteIcon} alt=" Delete Icon" style={deleteIconStyles}/>;
+  }
+
+  let archiveButton = null;
+  let finishButton = null;
+  if(props.isArchiveAndFinishButtonsVisible) {
+    archiveButton =
+      <Link to="/exerciseArchives">
+        <img
+          src={archiveIcon}
+          alt="Archive Icon"
+          style={archiveIconStyles}
+          name="archiveIcon"
+          onClick={(event) => {
+            props.onSettingArchiveAndFinishButtonsVisiblity(event);
+          }}
+        />
+      </Link>;
+    finishButton =
+      <img
+        src={finishIcon}
+        alt="Finish Icon"
+        style={finishIconStyles}
+        onClick={() => {
+          newWorkoutFormSubmission();
+        }}
+      />;
   }
 
   return(
@@ -71,20 +97,19 @@ function Header(props) {
       </div>
       <div style={navigationBarStyles}>
         <Link to="/">
-          <img src={homeIcon} alt="Home Icon" style={homeIconStyles}/>
+          <img
+            src={homeIcon}
+            alt="Home Icon"
+            style={homeIconStyles}
+            name="homeIcon"
+            onClick={(event) => {
+              props.onSettingArchiveAndFinishButtonsVisiblity(event);
+            }}
+          />
         </Link>
-        <Link to="/exerciseArchives">
-          <img src={archiveIcon} alt="Archive Icon" style={archiveIconStyles}/>
-        </Link>
-        <img
-          src={finishIcon}
-          alt="Finish Icon"
-          style={finishIconStyles}
-          onClick={() => {
-            newWorkoutFormSubmission();
-          }}
-        />
-      {deletedButton}
+        {archiveButton}
+        {finishButton}
+        {deletedButton}
       </div>
     </div>
   );
@@ -98,7 +123,10 @@ Header.propTypes = {
   onResetForm: PropTypes.func,
   selectedWorkoutToBeEditedId: PropTypes.string,
   onResettingSelectedWorkoutToBeEditedId: PropTypes.func,
-  isDeleteButtonVisible: PropTypes.bool
+  isDeleteButtonVisible: PropTypes.bool,
+  isArchiveAndFinishButtonsVisible: PropTypes.bool,
+  onSettingArchiveAndFinishButtonsVisiblity: PropTypes.func,
+  dispatch: PropTypes.func
 };
 
 export default connect()(Header);
