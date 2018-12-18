@@ -21,6 +21,7 @@ function ExerciseArchives(props) {
       <PreviousExerciseList
         masterWorkoutList={props.masterWorkoutList}
         onAutoFillingEditForm={props.onAutoFillingEditForm}
+        onSettingArchiveAndFinishButtonsVisiblity={props.onSettingArchiveAndFinishButtonsVisiblity}
       />
     </div>
   );
@@ -28,7 +29,8 @@ function ExerciseArchives(props) {
 
 ExerciseArchives.propTypes = {
   masterWorkoutList: PropTypes.object,
-  onAutoFillingEditForm: PropTypes.func
+  onAutoFillingEditForm: PropTypes.func,
+  onSettingArchiveAndFinishButtonsVisiblity: PropTypes.func
 };
 
 
