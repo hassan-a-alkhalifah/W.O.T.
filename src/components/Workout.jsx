@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 function Workout(props) {
   const workoutStyles = {
     paddingTop: '115px'
-  }
+  };
   const workoutFormContainerStyles = {
     padding: '12px 0',
     backgroundColor: '#454545',
@@ -26,7 +26,7 @@ function Workout(props) {
     width: '172px',
     padding: '13px',
     marginTop: '12px'
-  }
+  };
   const spacerStyles = {
     width: '36px',
     height: '24px'
@@ -53,18 +53,18 @@ function Workout(props) {
   let textArea = null;
   if(props.isTextAreaVisible) {
     textArea =
-    <textarea
-      rows="4"
-      cols="27"
-      style={textAreaStyles}
-      placeholder='Enter Workout Notes'
-      name="workoutNotesInput"
-      onChange={(event) => {props.onInputChange(event, 'workout');}}
-      value={props.workoutNotesInput}
-      ref={(input) => {_workoutNotesInput = input;}}
+      <textarea
+        rows="4"
+        cols="27"
+        style={textAreaStyles}
+        placeholder='Enter Workout Notes'
+        name="workoutNotesInput"
+        onChange={(event) => {props.onInputChange(event, 'workout');}}
+        value={props.workoutNotesInput}
+        ref={(input) => {_workoutNotesInput = input;}}
       >
-    </textarea>
-  };
+      </textarea>;
+  }
 
   return(
     <div style={workoutStyles}>
@@ -80,7 +80,7 @@ function Workout(props) {
             color: #C7C5C5;
           }
       `}</style>
-    <div style={workoutFormContainerStyles}>
+      <div style={workoutFormContainerStyles}>
         <div style={workoutFormStyles}>
           <div style={spacerStyles}></div>
           <input
@@ -108,7 +108,7 @@ function Workout(props) {
           value={props.dateInput}
           ref={(input) => {_dateInput = input;}}
         />
-      {textArea}
+        {textArea}
       </div>
       <ExerciseList
         masterExerciseList={props.masterExerciseList}

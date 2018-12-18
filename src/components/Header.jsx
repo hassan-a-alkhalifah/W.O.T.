@@ -12,7 +12,7 @@ function Header(props) {
   const headerStyles = {
     width: '100%',
     position: 'fixed'
-  }
+  };
   const mainTitleContainerSyles = {
     height: '68px',
     backgroundColor: '#000',
