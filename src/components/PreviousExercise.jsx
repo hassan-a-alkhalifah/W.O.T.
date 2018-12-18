@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-function PreviousExercise({ workoutTitle, date, onAutoFillingEditForm, id }) {
+function PreviousExercise({ workoutTitle, date, onAutoFillingEditForm, id, onSettingArchiveAndFinishButtonsVisiblity }) {
 
   const previousExerciseStyles = {
     display: 'flex',
@@ -16,10 +16,16 @@ function PreviousExercise({ workoutTitle, date, onAutoFillingEditForm, id }) {
   const dateWorkoutTitleContainerStyles = {
     display: 'flex'
   };
+  const dateStyles = {
+    marginRight: '8px'
+  };
 
   return(
     <div style={previousExerciseStyles}>
       <style jsx>{`
+        p {
+          color: #000;
+        }
         input[type="checkbox"] + span,
         input[type="checkbox"] + span::before
         {
@@ -58,11 +64,13 @@ function PreviousExercise({ workoutTitle, date, onAutoFillingEditForm, id }) {
       <Link to="/">
         <div
           style={dateWorkoutTitleContainerStyles}
-          onClick={() => {
+          name="workoutDateAndTime"
+          onClick={(event) => {
             onAutoFillingEditForm(id);
+            onSettingArchiveAndFinishButtonsVisiblity(event);
           }}
         >
-          <p>{date}</p>
+          <p style={dateStyles}>{date}</p>
           <p>{workoutTitle}</p>
         </div>
       </Link>
@@ -78,7 +86,8 @@ PreviousExercise.propTypes = {
   workoutTitle: PropTypes.string,
   date: PropTypes.string,
   id: PropTypes.string,
-  onAutoFillingEditForm: PropTypes.func
+  onAutoFillingEditForm: PropTypes.func,
+  onSettingArchiveAndFinishButtonsVisiblity: PropTypes.func
 };
 
 export default PreviousExercise;
