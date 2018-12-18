@@ -17,7 +17,7 @@ export function addWorkout(workoutTitle, date, workoutNotes, masterExerciseList)
 }
 
 export function editWorkout(selectedWorkoutToBeEditedId, workoutTitle, date, workoutNotes, masterExerciseList) {
-  return function(dispatch) {
+  return function() {
     return workouts.child(selectedWorkoutToBeEditedId).update({
       workoutTitle: workoutTitle,
       date: date,
