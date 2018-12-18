@@ -32,7 +32,8 @@ class App extends React.Component {
           }
         }
       },
-      selectedWorkoutToBeEditedId: null
+      selectedWorkoutToBeEditedId: null,
+      isDeleteButtonVisible: false
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -194,6 +195,7 @@ class App extends React.Component {
           onResetForm={this.handleResetForm}
           selectedWorkoutToBeEditedId={this.state.selectedWorkoutToBeEditedId}
           onResettingSelectedWorkoutToBeEditedId={this.handleResettingSelectedWorkoutToBeEditedId}
+          isDeleteButtonVisible={this.state.isDeleteButtonVisible}
         />
         <Switch>
           <Route
