@@ -34,7 +34,8 @@ class App extends React.Component {
       },
       selectedWorkoutToBeEditedId: null,
       isDeleteButtonVisible: false,
-      isArchiveAndFinishButtonsVisible: true
+      isArchiveAndFinishButtonsVisible: true,
+      isTextAreaVisible: false
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -44,6 +45,7 @@ class App extends React.Component {
     this.handleAutofillingEditForm = this.handleAutofillingEditForm.bind(this);
     this.handleResettingSelectedWorkoutToBeEditedId = this.handleResettingSelectedWorkoutToBeEditedId.bind(this);
     this.handleSettingArchiveAndFinishButtonsVisiblity = this.handleSettingArchiveAndFinishButtonsVisiblity.bind(this);
+    this.handleSettingTextAreaVisiblity = this.handleSettingTextAreaVisiblity.bind(this);
   }
 
   componentWillMount() {
@@ -57,8 +59,6 @@ class App extends React.Component {
     if(inputName === 'workout') {
       this.setState({
         [event.target.name]: event.target.value
-      }, () => {
-        console.log(this.state.dateInput);
       });
     } else if(inputName === 'exercise') {
       const newExercise = Object.assign({}, this.state.masterExerciseList[inputId], {
@@ -167,7 +167,8 @@ class App extends React.Component {
             }
           }
         }
-      }
+      },
+      isTextAreaVisible: false
     });
   }
 
@@ -200,6 +201,12 @@ class App extends React.Component {
     }
   }
 
+  handleSettingTextAreaVisiblity() {
+    this.setState({
+      isTextAreaVisible: this.state.isTextAreaVisible ? false : true
+    });
+  }
+
   render() {
     return(
       <div>
@@ -227,6 +234,8 @@ class App extends React.Component {
                 onInputChange={this.handleInputChange}
                 onAddingNewExercise={this.handleAddingNewExercise}
                 onAddingNewSet={this.handleAddingNewSet}
+                isTextAreaVisible={this.state.isTextAreaVisible}
+                onSettingTextAreaVisiblity={this.handleSettingTextAreaVisiblity}
               />
             }
           />
