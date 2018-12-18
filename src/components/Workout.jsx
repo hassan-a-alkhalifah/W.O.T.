@@ -5,6 +5,9 @@ import addExerciseIcon from '../assets/images/add-exercise-icon.png';
 import PropTypes from 'prop-types';
 
 function Workout(props) {
+  const workoutStyles = {
+    paddingTop: '115px'
+  }
   const workoutFormContainerStyles = {
     padding: '12px 0',
     backgroundColor: '#454545',
@@ -64,7 +67,7 @@ function Workout(props) {
   };
 
   return(
-    <div>
+    <div style={workoutStyles}>
       <style jsx>{`
           input {
             width: 185px;
