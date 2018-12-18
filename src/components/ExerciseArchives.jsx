@@ -8,7 +8,7 @@ function ExerciseArchives(props) {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: '28px 0'
+    padding: '145px 0 28px 0'
   };
   const exerciseArchivesTitleStyles = {
     fontSize: '30px',
