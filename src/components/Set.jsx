@@ -18,7 +18,11 @@ function Set(props) {
   if(props.setNumber !== 1) {
     ifNotFirstSetCheckboxNeeded =
       <label className="setCheckBoxContainer">
-        <input type="checkbox"/>
+        <input
+          type="checkbox"
+          name="setCheckboxCheckedList"
+          onChange={(event) => {props.onInputChange(event, 'setCheckbox', props.setId);}}
+        />
         <span></span>
       </label>;
   }
