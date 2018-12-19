@@ -22,6 +22,7 @@ function ExerciseArchives(props) {
         masterWorkoutList={props.masterWorkoutList}
         onAutoFillingEditForm={props.onAutoFillingEditForm}
         onSettingArchiveAndFinishButtonsVisiblity={props.onSettingArchiveAndFinishButtonsVisiblity}
+        onInputChange={props.onInputChange}
       />
     </div>
   );
@@ -30,7 +31,8 @@ function ExerciseArchives(props) {
 ExerciseArchives.propTypes = {
   masterWorkoutList: PropTypes.object,
   onAutoFillingEditForm: PropTypes.func,
-  onSettingArchiveAndFinishButtonsVisiblity: PropTypes.func
+  onSettingArchiveAndFinishButtonsVisiblity: PropTypes.func,
+  onInputChange: PropTypes.func
 };
 
 
