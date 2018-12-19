@@ -3,7 +3,7 @@ import homeIcon from '../assets/images/home-icon.png';
 import archiveIcon from '../assets/images/archive-icon.png';
 import finishIcon from '../assets/images/finish-icon.png';
 import deleteIcon from '../assets/images/delete-icon.png';
-import { addWorkout, editWorkout } from './../actions';
+import { addWorkout, editWorkout, deleteSelectedWorkouts } from './../actions';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -57,6 +57,11 @@ function Header(props) {
     props.onResetForm();
   }
 
+  function deleteWorkoutsSubmission() {
+    const {  dispatch } = props;
+    dispatch(deleteSelectedWorkouts(props.workoutCheckboxCheckedList));
+  }
+
   let deletedButton = null;
   if(props.exerciseCheckboxCheckedList.length !== 0 || props.setCheckboxCheckedList.length !== 0 || props.workoutCheckboxCheckedList.length !== 0) {
     deletedButton =
@@ -65,7 +70,11 @@ function Header(props) {
         alt=" Delete Icon"
         style={deleteIconStyles}
         onClick={() => {
-          props.onDeletingChecked();
+          if(props.exerciseCheckboxCheckedList.length !== 0 || props.setCheckboxCheckedList.length !== 0) {
+            props.onDeletingChecked();
+          } else if (props.workoutCheckboxCheckedList.length !== 0) {
+            deleteWorkoutsSubmission();
+          }
         }}
       />;
   }
