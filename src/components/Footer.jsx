@@ -28,7 +28,7 @@ function Footer() {
       `}</style>
       <p>Coded and Designed by Hassan Al-khalifah</p>
       <img src={commentIcon} alt="Comment Icon"/>
-      <img src={githubIcon} alt="Github Icon"/>
+      <a href="https://github.com/hassan-a-alkhalifah" target="_blank"><img src={githubIcon} alt="Github Icon"/></a>
     </div>
   );
 }
