@@ -75,6 +75,7 @@ function Header(props) {
           } else if (props.workoutCheckboxCheckedList.length !== 0) {
             deleteWorkoutsSubmission();
           }
+          props.onClearCheckboxCheckedLists();
         }}
       />;
   }
@@ -152,7 +153,8 @@ Header.propTypes = {
   exerciseCheckboxCheckedList: PropTypes.array,
   onDeletingChecked: PropTypes.func,
   setCheckboxCheckedList: PropTypes.array,
-  workoutCheckboxCheckedList: PropTypes.array
+  workoutCheckboxCheckedList: PropTypes.array,
+  onClearCheckboxCheckedLists: PropTypes.func
 };
 
 export default connect()(Header);
