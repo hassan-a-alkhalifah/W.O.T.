@@ -15,6 +15,7 @@ function PreviousExerciseList(props) {
             id={workout.id}
             onAutoFillingEditForm={props.onAutoFillingEditForm}
             onSettingArchiveAndFinishButtonsVisiblity={props.onSettingArchiveAndFinishButtonsVisiblity}
+            onInputChange={props.onInputChange}
           />
         );
       })}
@@ -25,7 +26,8 @@ function PreviousExerciseList(props) {
 PreviousExerciseList.propTypes = {
   masterWorkoutList: PropTypes.object,
   onAutoFillingEditForm: PropTypes.func,
-  onSettingArchiveAndFinishButtonsVisiblity: PropTypes.func
+  onSettingArchiveAndFinishButtonsVisiblity: PropTypes.func,
+  onInputChange: PropTypes.func
 };
 
 

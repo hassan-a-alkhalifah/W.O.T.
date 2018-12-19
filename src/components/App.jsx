@@ -33,9 +33,11 @@ class App extends React.Component {
         }
       },
       selectedWorkoutToBeEditedId: null,
-      isDeleteButtonVisible: false,
       isArchiveAndFinishButtonsVisible: true,
-      isTextAreaVisible: false
+      isTextAreaVisible: false,
+      workoutCheckboxCheckedList: [],
+      exerciseCheckboxCheckedList: [],
+      setCheckboxCheckedList: []
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -46,6 +48,7 @@ class App extends React.Component {
     this.handleResettingSelectedWorkoutToBeEditedId = this.handleResettingSelectedWorkoutToBeEditedId.bind(this);
     this.handleSettingArchiveAndFinishButtonsVisiblity = this.handleSettingArchiveAndFinishButtonsVisiblity.bind(this);
     this.handleSettingTextAreaVisiblity = this.handleSettingTextAreaVisiblity.bind(this);
+    this.handleDeletingChecked = this.handleDeletingChecked.bind(this);
   }
 
   componentWillMount() {
@@ -86,6 +89,60 @@ class App extends React.Component {
       this.setState({
         masterExerciseList: newExerciseList
       });
+    } else if(inputName === 'workoutCheckbox') {
+      if(event.target.checked === true) {
+        let newWorkoutCheckboxCheckedList = this.state.workoutCheckboxCheckedList.slice();
+        newWorkoutCheckboxCheckedList.push(inputId);
+        this.setState({
+          workoutCheckboxCheckedList: newWorkoutCheckboxCheckedList
+        });
+      } else {
+        let newWorkoutCheckboxCheckedList = [];
+        this.state.workoutCheckboxCheckedList.map((workoutCheckedId) => {
+          if(workoutCheckedId !== inputId) {
+            newWorkoutCheckboxCheckedList.push(workoutCheckedId);
+          }
+        });
+        this.setState({
+          workoutCheckboxCheckedList: newWorkoutCheckboxCheckedList
+        });
+      }
+    } else if(inputName === 'exerciseCheckbox') {
+      if(event.target.checked === true) {
+        let newExerciseCheckboxCheckedList = this.state.exerciseCheckboxCheckedList.slice();
+        newExerciseCheckboxCheckedList.push(inputId);
+        this.setState({
+          exerciseCheckboxCheckedList: newExerciseCheckboxCheckedList
+        });
+      } else {
+        let newExerciseCheckboxCheckedList = [];
+        this.state.exerciseCheckboxCheckedList.map((exerciseCheckedId) => {
+          if(exerciseCheckedId !== inputId) {
+            newExerciseCheckboxCheckedList.push(exerciseCheckedId);
+          }
+        });
+        this.setState({
+          exerciseCheckboxCheckedList: newExerciseCheckboxCheckedList
+        });
+      }
+    } else if(inputName === 'setCheckbox') {
+      if(event.target.checked === true) {
+        let newSetCheckboxCheckedList = this.state.setCheckboxCheckedList.slice();
+        newSetCheckboxCheckedList.push(inputId);
+        this.setState({
+          setCheckboxCheckedList: newSetCheckboxCheckedList
+        });
+      } else {
+        let newSetCheckboxCheckedList = [];
+        this.state.setCheckboxCheckedList.map((setCheckedId) => {
+          if(setCheckedId !== inputId) {
+            newSetCheckboxCheckedList.push(setCheckedId);
+          }
+        });
+        this.setState({
+          setCheckboxCheckedList: newSetCheckboxCheckedList
+        });
+      }
     } else {
       const newSet = Object.assign({}, this.state.masterExerciseList[exerciseId].setList[inputId], {
         reps: event.target.value
@@ -207,6 +264,36 @@ class App extends React.Component {
     });
   }
 
+  handleDeletingChecked() {
+    let newMasterExerciseList = Object.assign({}, this.state.masterExerciseList);
+    if(this.state.exerciseCheckboxCheckedList.length !== 0) {
+      Object.keys(newMasterExerciseList).map((exerciseId) => {
+        this.state.exerciseCheckboxCheckedList.map((exerciseToDeletedId) => {
+          if(exerciseId === exerciseToDeletedId) {
+            delete newMasterExerciseList[exerciseToDeletedId];
+            return;
+          }
+        });
+      });
+    }
+    if(this.state.setCheckboxCheckedList.length !== 0) {
+      Object.keys(newMasterExerciseList).map((exerciseId) => {
+        Object.keys(newMasterExerciseList[exerciseId].setList).map((setId) => {
+          this.state.setCheckboxCheckedList.map((setToBeDeletedId) => {
+            if(setId === setToBeDeletedId) {
+              delete newMasterExerciseList[exerciseId].setList[setToBeDeletedId];
+              return;
+            }
+          });
+        });
+      });
+    }
+    this.setState({
+      masterExerciseList: newMasterExerciseList,
+      exerciseCheckboxCheckedList: []
+    });
+  }
+
   render() {
     return(
       <div>
@@ -218,9 +305,12 @@ class App extends React.Component {
           onResetForm={this.handleResetForm}
           selectedWorkoutToBeEditedId={this.state.selectedWorkoutToBeEditedId}
           onResettingSelectedWorkoutToBeEditedId={this.handleResettingSelectedWorkoutToBeEditedId}
-          isDeleteButtonVisible={this.state.isDeleteButtonVisible}
           isArchiveAndFinishButtonsVisible={this.state.isArchiveAndFinishButtonsVisible}
           onSettingArchiveAndFinishButtonsVisiblity={this.handleSettingArchiveAndFinishButtonsVisiblity}
+          exerciseCheckboxCheckedList={this.state.exerciseCheckboxCheckedList}
+          onDeletingChecked={this.handleDeletingChecked}
+          setCheckboxCheckedList={this.state.setCheckboxCheckedList}
+          workoutCheckboxCheckedList={this.state.workoutCheckboxCheckedList}
         />
         <Switch>
           <Route
@@ -246,6 +336,7 @@ class App extends React.Component {
                 masterWorkoutList={this.props.masterWorkoutList}
                 onAutoFillingEditForm={this.handleAutofillingEditForm}
                 onSettingArchiveAndFinishButtonsVisiblity={this.handleSettingArchiveAndFinishButtonsVisiblity}
+                onInputChange={this.handleInputChange}
               />
             }
           />

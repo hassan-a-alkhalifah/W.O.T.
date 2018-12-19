@@ -58,9 +58,16 @@ function Header(props) {
   }
 
   let deletedButton = null;
-  if(props.isDeleteButtonVisible) {
+  if(props.exerciseCheckboxCheckedList.length !== 0 || props.setCheckboxCheckedList.length !== 0 || props.workoutCheckboxCheckedList.length !== 0) {
     deletedButton =
-      <img src={deleteIcon} alt=" Delete Icon" style={deleteIconStyles}/>;
+      <img
+        src={deleteIcon}
+        alt=" Delete Icon"
+        style={deleteIconStyles}
+        onClick={() => {
+          props.onDeletingChecked();
+        }}
+      />;
   }
 
   let archiveButton = null;
@@ -130,10 +137,13 @@ Header.propTypes = {
   onResetForm: PropTypes.func,
   selectedWorkoutToBeEditedId: PropTypes.string,
   onResettingSelectedWorkoutToBeEditedId: PropTypes.func,
-  isDeleteButtonVisible: PropTypes.bool,
   isArchiveAndFinishButtonsVisible: PropTypes.bool,
   onSettingArchiveAndFinishButtonsVisiblity: PropTypes.func,
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
+  exerciseCheckboxCheckedList: PropTypes.array,
+  onDeletingChecked: PropTypes.func,
+  setCheckboxCheckedList: PropTypes.array,
+  workoutCheckboxCheckedList: PropTypes.array
 };
 
 export default connect()(Header);

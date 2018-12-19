@@ -118,7 +118,11 @@ function Exercise(props) {
           value={props.exerciseName}
         />
         <label>
-          <input type="checkbox"/>
+          <input
+            type="checkbox"
+            name="exerciseCheckboxCheckedList"
+            onChange={(event) => {props.onInputChange(event, 'exerciseCheckbox', props.exerciseId);}}
+          />
           <span></span>
         </label>
       </div>
