@@ -46,6 +46,7 @@ class App extends React.Component {
     this.handleResettingSelectedWorkoutToBeEditedId = this.handleResettingSelectedWorkoutToBeEditedId.bind(this);
     this.handleSettingArchiveAndFinishButtonsVisiblity = this.handleSettingArchiveAndFinishButtonsVisiblity.bind(this);
     this.handleSettingTextAreaVisiblity = this.handleSettingTextAreaVisiblity.bind(this);
+    this.handleDeletingChecked = this.handleDeletingChecked.bind(this);
   }
 
   componentWillMount() {
@@ -225,6 +226,22 @@ class App extends React.Component {
     });
   }
 
+  handleDeletingChecked() {
+    let newMasterExerciseList = Object.assign({}, this.state.masterExerciseList);
+    Object.keys(newMasterExerciseList).map((exerciseId) => {
+      this.state.exerciseCheckboxCheckedList.map((exerciseToDeleteId) => {
+        if(exerciseId === exerciseToDeleteId) {
+          delete newMasterExerciseList[exerciseToDeleteId];
+          return;
+        }
+      });
+    });
+    this.setState({
+      masterExerciseList: newMasterExerciseList,
+      exerciseCheckboxCheckedList: []
+    });
+  }
+
   render() {
     return(
       <div>
@@ -239,6 +256,7 @@ class App extends React.Component {
           isArchiveAndFinishButtonsVisible={this.state.isArchiveAndFinishButtonsVisible}
           onSettingArchiveAndFinishButtonsVisiblity={this.handleSettingArchiveAndFinishButtonsVisiblity}
           exerciseCheckboxCheckedList={this.state.exerciseCheckboxCheckedList}
+          onDeletingChecked={this.handleDeletingChecked}
         />
         <Switch>
           <Route
