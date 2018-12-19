@@ -58,7 +58,7 @@ function Header(props) {
   }
 
   let deletedButton = null;
-  if(props.exerciseCheckboxCheckedList.length !== 0) {
+  if(props.exerciseCheckboxCheckedList.length !== 0 || props.setCheckboxCheckedList.length !== 0) {
     deletedButton =
       <img
         src={deleteIcon}
@@ -141,7 +141,8 @@ Header.propTypes = {
   onSettingArchiveAndFinishButtonsVisiblity: PropTypes.func,
   dispatch: PropTypes.func,
   exerciseCheckboxCheckedList: PropTypes.array,
-  onDeletingChecked: PropTypes.func
+  onDeletingChecked: PropTypes.func,
+  setCheckboxCheckedList: PropTypes.array
 };
 
 export default connect()(Header);
