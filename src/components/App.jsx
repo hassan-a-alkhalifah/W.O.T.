@@ -247,15 +247,26 @@ class App extends React.Component {
   }
 
   handleDeletingChecked() {
-    let newMasterExerciseList = {};
+    let newMasterExerciseList = Object.assign({}, this.state.masterExerciseList);
     if(this.state.exerciseCheckboxCheckedList.length !== 0) {
-      newMasterExerciseList = Object.assign({}, this.state.masterExerciseList);
       Object.keys(newMasterExerciseList).map((exerciseId) => {
-        this.state.exerciseCheckboxCheckedList.map((exerciseToDeleteId) => {
-          if(exerciseId === exerciseToDeleteId) {
-            delete newMasterExerciseList[exerciseToDeleteId];
+        this.state.exerciseCheckboxCheckedList.map((exerciseToDeletedId) => {
+          if(exerciseId === exerciseToDeletedId) {
+            delete newMasterExerciseList[exerciseToDeletedId];
             return;
           }
+        });
+      });
+    }
+    if(this.state.setCheckboxCheckedList.length !== 0) {
+      Object.keys(newMasterExerciseList).map((exerciseId) => {
+        Object.keys(newMasterExerciseList[exerciseId].setList).map((setId) => {
+          this.state.setCheckboxCheckedList.map((setToBeDeletedId) => {
+            if(setId === setToBeDeletedId) {
+              delete newMasterExerciseList[exerciseId].setList[setToBeDeletedId];
+              return;
+            }
+          });
         });
       });
     }
