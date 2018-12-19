@@ -1,1 +1,2 @@
 export const RECEIVE_WORKOUT = 'RECEIVE_WORKOUT';
+export const DELETE_WORKOUT = 'DELETE_WORKOUT';
