@@ -25,7 +25,8 @@ function Workout(props) {
   const textAreaStyles = {
     width: '172px',
     padding: '13px',
-    marginTop: '12px'
+    marginTop: '12px',
+    fontSize: '14px'
   };
   const spacerStyles = {
     width: '36px',
@@ -73,6 +74,9 @@ function Workout(props) {
           }
           input::placeholder {
             color: #C7C5C5;
+          }
+          ::-webkit-datetime-edit-text {
+            font-size: 14px;
           }
       `}</style>
       <div style={workoutFormContainerStyles}>
