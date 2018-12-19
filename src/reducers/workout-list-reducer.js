@@ -10,16 +10,12 @@ export default ( state = {}, action ) => {
     return newState;
   }
   case c.DELETE_WORKOUT: {
-    console.log("DELETE_WORKOUT");
     const newState = Object.assign({}, state);
     Object.keys(newState).map((workoutId) => {
-      console.log(workoutId);
-      console.log(action.workoutDeletedId);
       if(workoutId === action.workoutDeletedId) {
         delete newState[workoutId];
       }
     });
-    console.log(newState);
     return newState;
   }
   default: {

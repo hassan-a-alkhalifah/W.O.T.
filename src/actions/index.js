@@ -33,7 +33,7 @@ export function deleteSelectedWorkouts(listOfSelectedWorkoutsToBeDeleted) {
       workouts.child(workoutToBeDeletedId).remove();
     });
     return workouts;
-  }
+  };
 }
 
 export function watchFirebaseWorkoutRef() {
@@ -74,9 +74,8 @@ function receiveWorkout(workoutFromFirebase) {
 }
 
 function deleteWorkout(workoutDeletedId) {
-  console.log(workoutDeletedId);
   return {
     type: c.DELETE_WORKOUT,
     workoutDeletedId: workoutDeletedId
-  }
+  };
 }
