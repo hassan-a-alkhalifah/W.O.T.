@@ -33,6 +33,11 @@ function Set(props) {
 
   return(
     <div style={setContainerStyles}>
+      <style jsx>{`
+        input[type="number"] {
+          font-size: 14px;
+        }
+      `}</style>
       {ifNotFirstSetSpacerNeeded}
       <div className="setInputContainer">
         <div>
