@@ -116,7 +116,6 @@ class App extends React.Component {
       } else {
         let newSetCheckboxCheckedList = [];
         this.state.setCheckboxCheckedList.map((setCheckedId) => {
-          console.log(setCheckedId !== inputId);
           if(setCheckedId !== inputId) {
             newSetCheckboxCheckedList.push(setCheckedId);
           }
