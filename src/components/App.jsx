@@ -53,9 +53,10 @@ class App extends React.Component {
 
   componentWillMount() {
     const { dispatch } = this.props;
-    const { watchFirebaseWorkoutRef, watchFirebaseEditWorkoutRef } = actions;
+    const { watchFirebaseWorkoutRef, watchFirebaseEditWorkoutRef, watchFirebaseDeleteWorkoutRef } = actions;
     dispatch(watchFirebaseWorkoutRef());
     dispatch(watchFirebaseEditWorkoutRef());
+    dispatch(watchFirebaseDeleteWorkoutRef());
   }
 
   handleInputChange(event, inputName, inputId, exerciseId) {
