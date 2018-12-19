@@ -49,6 +49,7 @@ class App extends React.Component {
     this.handleSettingArchiveAndFinishButtonsVisiblity = this.handleSettingArchiveAndFinishButtonsVisiblity.bind(this);
     this.handleSettingTextAreaVisiblity = this.handleSettingTextAreaVisiblity.bind(this);
     this.handleDeletingChecked = this.handleDeletingChecked.bind(this);
+    this.handleClearCheckboxCheckedLists = this.handleClearCheckboxCheckedLists.bind(this);
   }
 
   componentWillMount() {
@@ -295,6 +296,14 @@ class App extends React.Component {
     });
   }
 
+  handleClearCheckboxCheckedLists() {
+    this.setState({
+      workoutCheckboxCheckedList: [],
+      exerciseCheckboxCheckedList: [],
+      setCheckboxCheckedList: []
+    });
+  }
+
   render() {
     return(
       <div>
@@ -312,6 +321,7 @@ class App extends React.Component {
           onDeletingChecked={this.handleDeletingChecked}
           setCheckboxCheckedList={this.state.setCheckboxCheckedList}
           workoutCheckboxCheckedList={this.state.workoutCheckboxCheckedList}
+          onClearCheckboxCheckedLists={this.handleClearCheckboxCheckedLists}
         />
         <Switch>
           <Route
