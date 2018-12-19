@@ -33,9 +33,9 @@ class App extends React.Component {
         }
       },
       selectedWorkoutToBeEditedId: null,
-      isDeleteButtonVisible: false,
       isArchiveAndFinishButtonsVisible: true,
-      isTextAreaVisible: false
+      isTextAreaVisible: false,
+      exerciseCheckboxCheckedList: []
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -86,6 +86,24 @@ class App extends React.Component {
       this.setState({
         masterExerciseList: newExerciseList
       });
+    } else if(inputName === 'exerciseCheckbox') {
+      if(event.target.checked === true) {
+        let newExerciseCheckboxCheckedList = this.state.exerciseCheckboxCheckedList.slice();
+        newExerciseCheckboxCheckedList.push(inputId);
+        this.setState({
+          exerciseCheckboxCheckedList: newExerciseCheckboxCheckedList
+        });
+      } else {
+        let newExerciseCheckboxCheckedList = [];
+        this.state.exerciseCheckboxCheckedList.map((exerciseCheckedId) => {
+          if(exerciseCheckedId !== inputId) {
+            newExerciseCheckboxCheckedList.push(inputId);
+          }
+        });
+        this.setState({
+          exerciseCheckboxCheckedList: newExerciseCheckboxCheckedList
+        });
+      }
     } else {
       const newSet = Object.assign({}, this.state.masterExerciseList[exerciseId].setList[inputId], {
         reps: event.target.value
@@ -218,9 +236,9 @@ class App extends React.Component {
           onResetForm={this.handleResetForm}
           selectedWorkoutToBeEditedId={this.state.selectedWorkoutToBeEditedId}
           onResettingSelectedWorkoutToBeEditedId={this.handleResettingSelectedWorkoutToBeEditedId}
-          isDeleteButtonVisible={this.state.isDeleteButtonVisible}
           isArchiveAndFinishButtonsVisible={this.state.isArchiveAndFinishButtonsVisible}
           onSettingArchiveAndFinishButtonsVisiblity={this.handleSettingArchiveAndFinishButtonsVisiblity}
+          exerciseCheckboxCheckedList={this.state.exerciseCheckboxCheckedList}
         />
         <Switch>
           <Route
