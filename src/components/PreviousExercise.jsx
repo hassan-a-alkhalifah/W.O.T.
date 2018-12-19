@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-function PreviousExercise({ workoutTitle, date, onAutoFillingEditForm, id, onSettingArchiveAndFinishButtonsVisiblity }) {
+function PreviousExercise({ workoutTitle, date, onAutoFillingEditForm, id, onSettingArchiveAndFinishButtonsVisiblity, onInputChange }) {
 
   const previousExerciseStyles = {
     display: 'flex',
@@ -75,7 +75,11 @@ function PreviousExercise({ workoutTitle, date, onAutoFillingEditForm, id, onSet
         </div>
       </Link>
       <label>
-        <input type="checkbox"/>
+        <input
+          type="checkbox"
+          name="workoutCheckboxCheckedList"
+          onChange={(event) => {onInputChange(event, 'workoutCheckbox', id);}}
+        />
         <span></span>
       </label>
     </div>
@@ -87,7 +91,8 @@ PreviousExercise.propTypes = {
   date: PropTypes.string,
   id: PropTypes.string,
   onAutoFillingEditForm: PropTypes.func,
-  onSettingArchiveAndFinishButtonsVisiblity: PropTypes.func
+  onSettingArchiveAndFinishButtonsVisiblity: PropTypes.func,
+  onInputChange: PropTypes.func
 };
 
 export default PreviousExercise;
