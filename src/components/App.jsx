@@ -35,6 +35,7 @@ class App extends React.Component {
       selectedWorkoutToBeEditedId: null,
       isArchiveAndFinishButtonsVisible: true,
       isTextAreaVisible: false,
+      workoutCheckboxCheckedList: [],
       exerciseCheckboxCheckedList: [],
       setCheckboxCheckedList: []
     };
@@ -88,6 +89,24 @@ class App extends React.Component {
       this.setState({
         masterExerciseList: newExerciseList
       });
+    } else if(inputName === 'workoutCheckbox') {
+      if(event.target.checked === true) {
+        let newWorkoutCheckboxCheckedList = this.state.workoutCheckboxCheckedList.slice();
+        newWorkoutCheckboxCheckedList.push(inputId);
+        this.setState({
+          workoutCheckboxCheckedList: newWorkoutCheckboxCheckedList
+        });
+      } else {
+        let newWorkoutCheckboxCheckedList = [];
+        this.state.workoutCheckboxCheckedList.map((workoutCheckedId) => {
+          if(workoutCheckedId !== inputId) {
+            newWorkoutCheckboxCheckedList.push(workoutCheckedId);
+          }
+        });
+        this.setState({
+          workoutCheckboxCheckedList: newWorkoutCheckboxCheckedList
+        });
+      }
     } else if(inputName === 'exerciseCheckbox') {
       if(event.target.checked === true) {
         let newExerciseCheckboxCheckedList = this.state.exerciseCheckboxCheckedList.slice();
@@ -291,6 +310,7 @@ class App extends React.Component {
           exerciseCheckboxCheckedList={this.state.exerciseCheckboxCheckedList}
           onDeletingChecked={this.handleDeletingChecked}
           setCheckboxCheckedList={this.state.setCheckboxCheckedList}
+          workoutCheckboxCheckedList={this.state.workoutCheckboxCheckedList}
         />
         <Switch>
           <Route
@@ -316,6 +336,7 @@ class App extends React.Component {
                 masterWorkoutList={this.props.masterWorkoutList}
                 onAutoFillingEditForm={this.handleAutofillingEditForm}
                 onSettingArchiveAndFinishButtonsVisiblity={this.handleSettingArchiveAndFinishButtonsVisiblity}
+                onInputChange={this.handleInputChange}
               />
             }
           />
