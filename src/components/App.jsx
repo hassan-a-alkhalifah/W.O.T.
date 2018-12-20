@@ -37,7 +37,8 @@ class App extends React.Component {
       isTextAreaVisible: false,
       workoutCheckboxCheckedList: [],
       exerciseCheckboxCheckedList: [],
-      setCheckboxCheckedList: []
+      setCheckboxCheckedList: [],
+      popUpModalVisible: false
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -50,6 +51,7 @@ class App extends React.Component {
     this.handleSettingTextAreaVisiblity = this.handleSettingTextAreaVisiblity.bind(this);
     this.handleDeletingChecked = this.handleDeletingChecked.bind(this);
     this.handleClearCheckboxCheckedLists = this.handleClearCheckboxCheckedLists.bind(this);
+    this.handlePopUpModalVisibiltyChange = this.handlePopUpModalVisibiltyChange.bind(this);
   }
 
   componentWillMount() {
@@ -303,6 +305,17 @@ class App extends React.Component {
       setCheckboxCheckedList: []
     });
   }
+  handlePopUpModalVisibiltyChange(choice) {
+    if(choice === 'open') {
+      this.setState({
+        popUpModalVisible: true
+      });
+    } else {
+      this.setState({
+        popUpModalVisible: false
+      });
+    }
+  }
 
   render() {
     return(
@@ -322,6 +335,7 @@ class App extends React.Component {
           setCheckboxCheckedList={this.state.setCheckboxCheckedList}
           workoutCheckboxCheckedList={this.state.workoutCheckboxCheckedList}
           onClearCheckboxCheckedLists={this.handleClearCheckboxCheckedLists}
+          onPopUpModalVisibiltyChange={this.handlePopUpModalVisibiltyChange}
         />
         <Switch>
           <Route
@@ -337,6 +351,9 @@ class App extends React.Component {
                 onAddingNewSet={this.handleAddingNewSet}
                 isTextAreaVisible={this.state.isTextAreaVisible}
                 onSettingTextAreaVisiblity={this.handleSettingTextAreaVisiblity}
+                onResetForm={this.handleResetForm}
+                onPopUpModalVisibiltyChange={this.handlePopUpModalVisibiltyChange}
+                popUpModalVisible={this.state.popUpModalVisible}
               />
             }
           />
