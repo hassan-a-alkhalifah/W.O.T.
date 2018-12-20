@@ -126,7 +126,7 @@ function Header(props) {
             onClick={(event) => {
               props.onSettingArchiveAndFinishButtonsVisiblity(event);
               if(props.selectedWorkoutToBeEditedId !== null) {
-                props.onResetForm();
+                props.onPopUpModalVisibiltyChange("open");
               }
             }}
           />
@@ -154,7 +154,8 @@ Header.propTypes = {
   onDeletingChecked: PropTypes.func,
   setCheckboxCheckedList: PropTypes.array,
   workoutCheckboxCheckedList: PropTypes.array,
-  onClearCheckboxCheckedLists: PropTypes.func
+  onClearCheckboxCheckedLists: PropTypes.func,
+  onPopUpModalVisibiltyChange: PropTypes.func
 };
 
 export default connect()(Header);
