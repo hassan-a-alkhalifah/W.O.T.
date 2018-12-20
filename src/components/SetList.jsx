@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 function SetList(props) {
   return(
     <div>
-      {Object.keys(props.setList).map((setId) => {
+      {Object.keys(props.setList).map((setId, setIndexPos) => {
         let set = props.setList[setId];
         return(
           <Set
@@ -17,6 +17,7 @@ function SetList(props) {
             exerciseId={props.exerciseId}
             onInputChange={props.onInputChange}
             setList={props.setList}
+            setIndexPos={setIndexPos}
           />
         );
       })}

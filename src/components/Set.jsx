@@ -15,7 +15,7 @@ function Set(props) {
   let ifNotFirstSetCheckboxNeeded = null;
   let ifNotFirstSetSpacerNeeded = null;
 
-  if(props.setNumber !== 1) {
+  if(props.setIndexPos !== 0) {
     ifNotFirstSetCheckboxNeeded =
       <label className="setCheckBoxContainer">
         <input
@@ -68,7 +68,8 @@ Set.propTypes = {
   reps: PropTypes.string,
   exerciseId: PropTypes.string,
   onInputChange: PropTypes.func,
-  setList: PropTypes.object
+  setList: PropTypes.object,
+  setIndexPos: PropTypes.number
 };
 
 export default Set;

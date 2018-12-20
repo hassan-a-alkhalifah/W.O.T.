@@ -310,7 +310,7 @@ class App extends React.Component {
       this.setState({
         popUpModalVisible: true
       });
-    } else {
+    } else if(choice === 'close') {
       this.setState({
         popUpModalVisible: false
       });
