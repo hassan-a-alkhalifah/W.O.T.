@@ -4,7 +4,7 @@ import noteIcon from '../assets/images/note-icon.png';
 import addExerciseIcon from '../assets/images/add-exercise-icon.png';
 import PropTypes from 'prop-types';
 import finishIcon from '../assets/images/finish-icon.png';
-import disagreeIcon from '../assets/images/disagree-icon.png'
+import disagreeIcon from '../assets/images/disagree-icon.png';
 
 function Workout(props) {
   const workoutStyles = {
@@ -18,20 +18,20 @@ function Workout(props) {
     display: 'flex',
     justifyContent: 'center',
     backgroundColor: 'rgba(219, 219, 219, 0.5)'
-  }
+  };
   const checkIfLeavingPopUpModalSubBackgroundStyles = {
     width: '265px',
     height: '130px',
     backgroundColor: '#FFF'
-  }
+  };
   const popUpModalTextContainerStyles = {
     padding: '15px 0 0 20px',
     marginBottom: '15px'
-  }
+  };
   const popUpModalButtonsContainerStyles = {
     display: 'flex',
     justifyContent: 'space-around'
-  }
+  };
   const finishAndDisagreeIconStyles = {
     width: '25px',
     height: '25px'
@@ -93,33 +93,33 @@ function Workout(props) {
   let popUpModal = null;
   if(props.popUpModalVisible) {
     popUpModal =
-    <div style={checkIfLeavingPopUpModalStyles}>
-      <div style={checkIfLeavingPopUpModalSubBackgroundStyles}>
-        <div style={popUpModalTextContainerStyles}>
-          <p>Changes will not be saved</p>
-          <p>Are you sure you would like to exit?</p>
+      <div style={checkIfLeavingPopUpModalStyles}>
+        <div style={checkIfLeavingPopUpModalSubBackgroundStyles}>
+          <div style={popUpModalTextContainerStyles}>
+            <p>Changes will not be saved</p>
+            <p>Are you sure you would like to exit?</p>
+          </div>
+          <div style={popUpModalButtonsContainerStyles}>
+            <img
+              src={finishIcon}
+              alt="Agree Icon"
+              style={finishAndDisagreeIconStyles}
+              onClick={() => {
+                props.onPopUpModalVisibiltyChange('close');
+                props.onResetForm();
+              }}
+            />
+            <img
+              src={disagreeIcon}
+              alt="Disagree Icon"
+              style={finishAndDisagreeIconStyles}
+              onClick={() => {
+                props.onPopUpModalVisibiltyChange('close');
+              }}
+            />
+          </div>
         </div>
-        <div style={popUpModalButtonsContainerStyles}>
-          <img
-            src={finishIcon}
-            alt="Agree Icon"
-            style={finishAndDisagreeIconStyles}
-            onClick={() => {
-              props.onPopUpModalVisibiltyChange("close");
-              props.onResetForm();
-            }}
-          />
-          <img
-            src={disagreeIcon}
-            alt="Disagree Icon"
-            style={finishAndDisagreeIconStyles}
-            onClick={() => {
-              props.onPopUpModalVisibiltyChange("close");
-            }}
-          />
-        </div>
-      </div>
-    </div>;
+      </div>;
   }
 
   return(

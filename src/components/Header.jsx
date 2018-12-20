@@ -126,7 +126,7 @@ function Header(props) {
             onClick={(event) => {
               props.onSettingArchiveAndFinishButtonsVisiblity(event);
               if(props.selectedWorkoutToBeEditedId !== null) {
-                props.onPopUpModalVisibiltyChange("open");
+                props.onPopUpModalVisibiltyChange('open');
               }
             }}
           />
